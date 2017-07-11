@@ -9,6 +9,7 @@
 #import "OSMessage.h"
 #import <objc/runtime.h>
 #import "UIImage+SDYHelper.h"
+#import "TCFoundation.h"
 
 #pragma mark - OSMessage
 

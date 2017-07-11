@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TCFoundation.h"
 
 // 分享支持的平台
 typedef NS_ENUM(NSInteger, OSPlatformCode) {

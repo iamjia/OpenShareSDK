@@ -11,6 +11,7 @@
 #import "OpenShare+Facebook.h"
 #import "OpenShareFacebookParam.h"
 #import "OpenShare+Helper.h"
+#import "TCFoundation.h"
 
 static NSString *const kOpenShareFBPasteboardKey = @"com.facebook.Facebook.FBAppBridgeType";
 static NSString *const kFbAppName = @"Thor";

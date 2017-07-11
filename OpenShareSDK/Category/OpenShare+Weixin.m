@@ -157,7 +157,7 @@ static OSWXParameter *s_wxParam = nil;
                                                            options:kNilOptions
                                                              error:NULL];
     } @catch (NSException *exception) {
-        DLog_e(@"%@", exception);
+        NSLog(@"%@", exception);
     } @finally {
         if (nil != output) {
             [UIPasteboard.generalPasteboard setData:output forPasteboardType:kWXPasterBoardKey];
@@ -202,7 +202,7 @@ static OSWXParameter *s_wxParam = nil;
                                                                 format:nil
                                                                  error:NULL][appId];
     } @catch (NSException *exception) {
-        DLog_e(@"%@", exception);
+        NSLog(@"%@", exception);
     } @finally {
         OSWXResponse *response = [OSWXResponse tc_mappingWithDictionary:contentDic];
         [[NSNotificationCenter defaultCenter] postNotificationName:kOSShareFinishedNotification object:response];

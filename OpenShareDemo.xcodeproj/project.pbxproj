@@ -65,8 +65,8 @@
 		08EA8C7B1E6DA6A300508506 /* os_fb_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 08EA8C771E6DA6A300508506 /* os_fb_icon@3x.png */; };
 		08EA8C7C1E6DA6A300508506 /* os_tw_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 08EA8C781E6DA6A300508506 /* os_tw_icon@2x.png */; };
 		08EA8C7D1E6DA6A300508506 /* os_tw_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 08EA8C791E6DA6A300508506 /* os_tw_icon@3x.png */; };
+		B727546D1F14AA0B0078CD09 /* UIImage+SDYHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B727546C1F14AA0B0078CD09 /* UIImage+SDYHelper.m */; };
 		B76A7F051F1356090010FBD3 /* libTCKitLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B76A7EFB1F1355B80010FBD3 /* libTCKitLib.a */; };
-		B7ED48F31EA214BD0032FD9E /* UIImage+SDYHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EA8D961E6E873E00508506 /* UIImage+SDYHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -274,9 +274,9 @@
 		08EA8C771E6DA6A300508506 /* os_fb_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "os_fb_icon@3x.png"; sourceTree = "<group>"; };
 		08EA8C781E6DA6A300508506 /* os_tw_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "os_tw_icon@2x.png"; sourceTree = "<group>"; };
 		08EA8C791E6DA6A300508506 /* os_tw_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "os_tw_icon@3x.png"; sourceTree = "<group>"; };
-		08EA8D951E6E873E00508506 /* UIImage+SDYHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SDYHelper.h"; sourceTree = "<group>"; };
-		08EA8D961E6E873E00508506 /* UIImage+SDYHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SDYHelper.m"; sourceTree = "<group>"; };
 		08EA8D9A1E6EA96300508506 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B727546B1F14AA0B0078CD09 /* UIImage+SDYHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SDYHelper.h"; sourceTree = "<group>"; };
+		B727546C1F14AA0B0078CD09 /* UIImage+SDYHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SDYHelper.m"; sourceTree = "<group>"; };
 		B76A7EE41F1355B80010FBD3 /* TCKitSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TCKitSDK.xcodeproj; path = ../TCKit/TCKitSDK/TCKitSDK.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -406,8 +406,6 @@
 				088CABEA1CFBDD75000CEFCD /* AppDelegate.m */,
 				088CABEC1CFBDD75000CEFCD /* ViewController.h */,
 				088CABED1CFBDD75000CEFCD /* ViewController.m */,
-				08EA8D951E6E873E00508506 /* UIImage+SDYHelper.h */,
-				08EA8D961E6E873E00508506 /* UIImage+SDYHelper.m */,
 				088CABF21CFBDD75000CEFCD /* Assets.xcassets */,
 				088CABF71CFBDD75000CEFCD /* Info.plist */,
 				088CAD501CFBDEAE000CEFCD /* OpenShareDemo-Prefix.pch */,
@@ -474,6 +472,8 @@
 		08D2FF621EFBB76B00DFD84F /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				B727546B1F14AA0B0078CD09 /* UIImage+SDYHelper.h */,
+				B727546C1F14AA0B0078CD09 /* UIImage+SDYHelper.m */,
 				08D2FF651EFBB76B00DFD84F /* UIView+StatusBar.h */,
 				08D2FF661EFBB76B00DFD84F /* UIView+StatusBar.m */,
 			);
@@ -757,7 +757,6 @@
 				08EA8C711E6D615300508506 /* OpenShare+Twitter.m in Sources */,
 				08851A361CFC300B00F2F1B8 /* OpenShareConfig.m in Sources */,
 				08851A3C1CFC300B00F2F1B8 /* OSPlatformController.m in Sources */,
-				B7ED48F31EA214BD0032FD9E /* UIImage+SDYHelper.m in Sources */,
 				08851A3B1CFC300B00F2F1B8 /* OSWXParameter.m in Sources */,
 				08EA8C751E6DA29600508506 /* OpenShareFacebookParam.m in Sources */,
 				08851A301CFC300B00F2F1B8 /* OpenShare+QQ.m in Sources */,
@@ -772,6 +771,7 @@
 				08CD7CE91ED4261E001C959B /* ScreenCaptureManager.m in Sources */,
 				08851A351CFC300B00F2F1B8 /* OpenShare+Helper.m in Sources */,
 				08851A371CFC300B00F2F1B8 /* OpenShareManager.m in Sources */,
+				B727546D1F14AA0B0078CD09 /* UIImage+SDYHelper.m in Sources */,
 				08851A2F1CFC300B00F2F1B8 /* OpenShare+Mail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

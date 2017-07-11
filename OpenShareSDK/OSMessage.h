@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "OpenShareConfig.h"
 
-
 typedef NS_ENUM(NSInteger, OSMultimediaType) {
     OSMultimediaTypeUnknown,
     OSMultimediaTypeText,

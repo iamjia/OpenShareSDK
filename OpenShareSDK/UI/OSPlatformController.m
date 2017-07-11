@@ -9,6 +9,7 @@
 #import "OSPlatformController.h"
 #import "OpenShare.h"
 #import "ScreenCaptureManager.h"
+#import "TCKit.h"
 
 static NSString *const kCellIdentifier = @"UICollectionViewCell";
 static NSInteger const kContentBtnTag = 1024;

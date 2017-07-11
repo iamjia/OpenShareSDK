@@ -6,9 +6,11 @@
 //
 //
 
-static UIView *s_statusBar = nil;
-
 #import "UIView+StatusBar.h"
+#import "TCFoundation.h"
+
+
+__weak static UIView *s_statusBar = nil;
 
 @implementation UIView (StatusBar)
 
@@ -22,21 +24,14 @@ static UIView *s_statusBar = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         Class statusBarClass = NSClassFromString(@"UIStatusBar");
-        [statusBarClass tc_swizzle:@selector(setFrame:)];
-        [statusBarClass tc_swizzle:NSSelectorFromString(@"dealloc")];
+        [statusBarClass tc_swizzle:@selector(initWithFrame:) to:@selector(openshare_initWithFrame:)];
     });
 }
 
-- (void)tc_setFrame:(CGRect)frame
+- (id)openshare_initWithFrame:(CGRect)frame
 {
-    [self tc_setFrame:frame];
     s_statusBar = self;
-}
-
-- (void)tc_dealloc
-{
-    s_statusBar = nil;
-    [self tc_dealloc];
+    return [self openshare_initWithFrame:frame];
 }
 
 - (UIView *)findFirstResponder
