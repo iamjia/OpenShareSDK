@@ -34,6 +34,8 @@ static CGFloat const kAnimDuration = 0.35f;
     UIImage *_screenShot;
     UIImageView *_previewImageView;
     UIImageView *_blurBackgroundImgView;
+    
+    BOOL _shouldAnimate;
 }
 
 - (NSBundle *)openShareBundle
@@ -203,8 +205,12 @@ static CGFloat const kAnimDuration = 0.35f;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    // 禁止present界面dismiss的时候触发这些操作
+    _shouldAnimate = nil == self.presentedViewController;
+    
     ScreenCaptureManager.manger.ignoreNotification = YES;
-    if (nil != _screenShot) {
+    if (nil != _screenShot && ![UIApplication sharedApplication].isStatusBarHidden) {
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
     }
 }
@@ -212,7 +218,11 @@ static CGFloat const kAnimDuration = 0.35f;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self show];
+    
+    // 禁止邮件或者短信界面dismiss的时候触发这些操作
+    if (_shouldAnimate) {
+        [self show];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated

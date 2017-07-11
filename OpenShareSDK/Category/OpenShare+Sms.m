@@ -12,7 +12,7 @@
 
 @implementation OpenShare (Sms)
 
-+ (void)shareToSms:(OSMessage *)msg delegate:(id<MFMessageComposeViewControllerDelegate>)delegate
++ (void)shareToSms:(OSMessage *)msg delegate:(id<MFMessageComposeViewControllerDelegate>)delegate presentingCtrler:(UIViewController *)ctrler
 {
     if (MFMessageComposeViewController.canSendText) {
         msg.dataItem.platformCode = kOSPlatformSms;
@@ -22,20 +22,13 @@
         controller.body = msg.dataItem.msgBody;
         controller.messageComposeDelegate = delegate;
         
-        if (OSMultimediaTypeImage == msg.multimediaType) {
-            if (nil == msg.dataItem.attachment) {
-                msg.dataItem.attachment = msg.dataItem.imageData;
-            }
-        }
-        
         if (nil != msg.dataItem.attachment) {
-
             [controller addAttachmentData:msg.dataItem.attachment
-                           typeIdentifier:msg.dataItem.attachmentMimeType
+                           typeIdentifier:@"public.data"
                                  filename:msg.dataItem.attachmentFileName];
         }
         
-        [UIApplication.sharedApplication.delegate.window.topMostViewController presentViewController:controller animated:YES completion:nil];
+        [ctrler presentViewController:controller animated:YES completion:nil];
     }
 }
 

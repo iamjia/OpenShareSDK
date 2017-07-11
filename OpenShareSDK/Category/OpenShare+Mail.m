@@ -12,7 +12,7 @@
 
 @implementation OpenShare (Mail)
 
-+ (void)shareToMail:(OSMessage *)msg delegate:(id<MFMailComposeViewControllerDelegate>)delegate
++ (void)shareToMail:(OSMessage *)msg delegate:(id<MFMailComposeViewControllerDelegate>)delegate presentingCtrler:(UIViewController *)ctrler
 {
     if (MFMailComposeViewController.canSendMail) {
         msg.dataItem.platformCode = kOSPlatformEmail;
@@ -24,17 +24,11 @@
         mailComposeCtrler.subject = msg.dataItem.emailSubject;
         [mailComposeCtrler setMessageBody:msg.dataItem.emailBody isHTML:YES];
         
-        if (OSMultimediaTypeImage == msg.multimediaType) {
-            if (nil == msg.dataItem.attachment) {
-                msg.dataItem.attachment = msg.dataItem.imageData;
-            }
-        }
-        
         if (nil != msg.dataItem.attachment) {
             [mailComposeCtrler addAttachmentData:msg.dataItem.attachment mimeType:msg.dataItem.attachmentMimeType fileName:msg.dataItem.attachmentFileName];
         }
         
-        [[UIApplication sharedApplication].delegate.window.topMostViewController presentViewController:mailComposeCtrler animated:YES completion:nil];
+        [ctrler presentViewController:mailComposeCtrler animated:YES completion:nil];
         
     } else {
         msg.dataItem.platformCode = kOSPlatformEmail;

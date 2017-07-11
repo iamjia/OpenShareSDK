@@ -179,11 +179,11 @@
             break;
         }
         case kOSPlatformEmail: {
-            [OpenShare shareToMail:_message delegate:self];
+            [OpenShare shareToMail:_message delegate:self presentingCtrler:ctrler];
             break;
         }
         case kOSPlatformSms: {
-            [OpenShare shareToSms:_message delegate:self];
+            [OpenShare shareToSms:_message delegate:self presentingCtrler:ctrler];
             break;
         }
         case kOSPlatformCopyUrl : {
@@ -326,6 +326,7 @@
 {
     [controller dismissViewControllerAnimated:YES completion:nil];
     _platform = kOSPlatformEmail;
+    
     [self callShareCompletionHandle:nil == error ? kOSStateSuccess : kOSStateFail error:error];
 }
 
@@ -335,7 +336,10 @@
 - (void)callShareCompletionHandle:(OSShareState)state error:(NSError *)error
 {
     // 消失
-    [self dismissPlatformController];
+    // !!!: 短信和邮件不消失
+    if (_platform != kOSPlatformEmail && _platform != kOSPlatformSms) {
+        [self dismissPlatformController];
+    }
     
     if (nil != _shareCompletionHandle) {
         _shareCompletionHandle(_platform, _message, state, error);
