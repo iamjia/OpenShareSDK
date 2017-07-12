@@ -259,6 +259,7 @@ static CGFloat const kAnimDuration = 0.35f;
         contentBtn.paddingBetweenTitleAndImage = 5.0f;
         contentBtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
         contentBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
+        contentBtn.titleLabel.minimumScaleFactor = 0.8;
         [contentBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [cell.contentView addSubview:contentBtn];
     }
