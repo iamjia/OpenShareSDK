@@ -337,7 +337,7 @@
 {
     // 消失
     // !!!: 短信和邮件不消失
-    if (_platform != kOSPlatformEmail && _platform != kOSPlatformSms) {
+    if (_platform != kOSPlatformEmail && _platform != kOSPlatformSms && nil == error) {
         [self dismissPlatformController];
     }
     

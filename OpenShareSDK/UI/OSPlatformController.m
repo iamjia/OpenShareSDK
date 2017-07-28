@@ -214,16 +214,21 @@ static CGFloat const kAnimDuration = 0.35f;
     if (nil != _screenShot && ![UIApplication sharedApplication].isStatusBarHidden) {
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
     }
+    
+    // 禁止邮件或者短信界面dismiss的时候触发这些操作
+    if (_shouldAnimate) {
+        [self show];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    // 禁止邮件或者短信界面dismiss的时候触发这些操作
-    if (_shouldAnimate) {
-        [self show];
-    }
+//    // 禁止邮件或者短信界面dismiss的时候触发这些操作
+//    if (_shouldAnimate) {
+//        [self show];
+//    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated

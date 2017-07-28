@@ -195,7 +195,7 @@ static NSString *const kDefaultData = @"defaultData";
     }
     // 如果存在imagedata，那么忽略掉thumbnaildata，采用imagedata来裁剪
     if (nil != thumbnailData) {
-        NSUInteger bytes = 40 * 1024; // 默认40kb
+        NSUInteger bytes = 38 * 1024; // 默认40kb
         switch (_platformCode) {
             case kOSPlatformQQ:
             case kOSPlatformQQZone: {
