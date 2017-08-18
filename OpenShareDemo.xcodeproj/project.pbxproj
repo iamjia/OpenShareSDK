@@ -154,6 +154,13 @@
 			remoteGlobalIDString = B76D75941F13234D00CF77FA;
 			remoteInfo = TCKitLib;
 		};
+		B7A1602A1F46E3CB00E17685 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B76A7EE41F1355B80010FBD3 /* TCKitSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B72A5F571F1F4066002D900D;
+			remoteInfo = TCFoundationLib;
+		};
 		B7BB97E01D90D1FC00C1F2A0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 088CABDB1CFBDD75000CEFCD /* Project object */;
@@ -505,6 +512,7 @@
 				B76A7EFD1F1355B80010FBD3 /* TCNetwork.framework */,
 				B76A7EFF1F1355B80010FBD3 /* TCNetworkTests.xctest */,
 				B76A7F011F1355B80010FBD3 /* libTCApplicationLib.a */,
+				B7A1602B1F46E3CB00E17685 /* libTCFoundationLib.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -677,6 +685,13 @@
 			fileType = archive.ar;
 			path = libTCApplicationLib.a;
 			remoteRef = B76A7F001F1355B80010FBD3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B7A1602B1F46E3CB00E17685 /* libTCFoundationLib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libTCFoundationLib.a;
+			remoteRef = B7A1602A1F46E3CB00E17685 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -940,6 +955,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
