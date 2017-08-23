@@ -290,12 +290,9 @@ static CGFloat const kAnimDuration = 0.35f;
             [self.delegate OSPlatformController:self didSelectPlatformItem:self.platforms[indexPath.item] popoverRect:rect];
         }
     } else {
-        __weak typeof(self) wSelf = self;
-        [self dismiss:^{
-            if (nil != wSelf.delegate && [wSelf.delegate respondsToSelector:@selector(OSPlatformController:didSelectPlatformItem:popoverRect:)]) {
-                [wSelf.delegate OSPlatformController:wSelf didSelectPlatformItem:wSelf.platforms[indexPath.item] popoverRect:rect];
-            }
-        }];
+        if (nil != self.delegate && [self.delegate respondsToSelector:@selector(OSPlatformController:didSelectPlatformItem:popoverRect:)]) {
+            [self.delegate OSPlatformController:self didSelectPlatformItem:self.platforms[indexPath.item] popoverRect:rect];
+        }
     }
 }
 
