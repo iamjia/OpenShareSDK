@@ -28,7 +28,7 @@
                                  filename:msg.dataItem.attachmentFileName];
         }
         
-        [ctrler presentViewController:controller animated:YES completion:nil];
+        [ctrler presentViewController:controller animated:YES completion:NULL];
     }
 }
 

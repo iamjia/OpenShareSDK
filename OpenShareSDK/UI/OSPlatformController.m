@@ -10,6 +10,7 @@
 #import "OpenShare.h"
 #import "ScreenCaptureManager.h"
 #import "TCKit.h"
+#import "PresentAnimator.h"
 
 static NSString *const kCellIdentifier = @"UICollectionViewCell";
 static NSInteger const kContentBtnTag = 1024;
@@ -19,7 +20,7 @@ static CGFloat const kAnimDuration = 0.35f;
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
 , CAAnimationDelegate
 #endif
->
+, UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, strong) NSMutableArray *platforms;
 @end
@@ -131,6 +132,10 @@ static CGFloat const kAnimDuration = 0.35f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor clearColor];
+    
+    self.modalPresentationStyle = UIModalPresentationFullScreen;
+    self.transitioningDelegate = self;
     
     _grayTouchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     _grayTouchView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
@@ -361,6 +366,15 @@ static CGFloat const kAnimDuration = 0.35f;
     _grayTouchView.hidden = YES;
 }
 
+- (nullable id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
+{
+    return [[PresentAnimator alloc] init];
+}
+
+- (nullable id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    return [[PresentAnimator alloc] init];
+}
 
 #pragma mark - CAAnimationDelegate
 

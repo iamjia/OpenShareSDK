@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		081F70301F4ECBD40028DC98 /* PresentAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 081F702F1F4ECBD40028DC98 /* PresentAnimator.m */; };
 		0879B3091D013D30006E1636 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0879B30B1D013D30006E1636 /* Localizable.strings */; };
 		088519EC1CFC2F2800F2F1B8 /* os_email_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 088519D51CFC2F2800F2F1B8 /* os_email_icon.png */; };
 		088519ED1CFC2F2800F2F1B8 /* os_email_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 088519D61CFC2F2800F2F1B8 /* os_email_icon@2x.png */; };
@@ -193,6 +194,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		081F702E1F4ECBD40028DC98 /* PresentAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentAnimator.h; sourceTree = "<group>"; };
+		081F702F1F4ECBD40028DC98 /* PresentAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentAnimator.m; sourceTree = "<group>"; };
 		0879B30A1D013D30006E1636 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		088519D51CFC2F2800F2F1B8 /* os_email_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = os_email_icon.png; sourceTree = "<group>"; };
 		088519D61CFC2F2800F2F1B8 /* os_email_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "os_email_icon@2x.png"; sourceTree = "<group>"; };
@@ -380,6 +383,8 @@
 			children = (
 				08851A2D1CFC300B00F2F1B8 /* OSPlatformController.h */,
 				08851A2E1CFC300B00F2F1B8 /* OSPlatformController.m */,
+				081F702E1F4ECBD40028DC98 /* PresentAnimator.h */,
+				081F702F1F4ECBD40028DC98 /* PresentAnimator.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -782,6 +787,7 @@
 				08851A341CFC300B00F2F1B8 /* OpenShare.m in Sources */,
 				08851A311CFC300B00F2F1B8 /* OpenShare+SinaWeibo.m in Sources */,
 				08D2FF681EFBB76B00DFD84F /* UIView+StatusBar.m in Sources */,
+				081F70301F4ECBD40028DC98 /* PresentAnimator.m in Sources */,
 				08851A321CFC300B00F2F1B8 /* OpenShare+Sms.m in Sources */,
 				08CD7CE91ED4261E001C959B /* ScreenCaptureManager.m in Sources */,
 				08851A351CFC300B00F2F1B8 /* OpenShare+Helper.m in Sources */,

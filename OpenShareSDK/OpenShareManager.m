@@ -20,11 +20,12 @@
 @interface OpenShareManager () <OSPlatformControllerDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate>
 {
     @private
-    OSPlatformController *_platformCtrler;
     __weak id _shareFinishObsvr;
     __weak id _firstResponder;
 }
 
+@property (nonatomic, strong) UIViewController *topMostCtrler;
+@property (nonatomic, strong) OSPlatformController *platformCtrler;
 @property (nonatomic, assign) OSPlatformCode platform;
 @property (nonatomic, strong) OSMessage *message;
 @property (nonatomic, copy) OSShareCompletionHandle shareCompletionHandle;
@@ -217,18 +218,43 @@
 
 - (void)showPlatformController
 {
-    UIViewController *viewController = [UIApplication sharedApplication].delegate.window.topMostViewController;
-    _firstResponder = viewController.view.findFirstResponder;
+    _topMostCtrler = [UIApplication sharedApplication].delegate.window.topMostViewController;
+    _firstResponder = _topMostCtrler.view.findFirstResponder;
     [_firstResponder resignFirstResponder];
     
-    [UIApplication.sharedApplication.delegate.window addSubview:_platformCtrler.view];
+    if ([_topMostCtrler isKindOfClass:[UIAlertController class]]) {
+        
+        UIView *coverView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        coverView.backgroundColor = [UIColor whiteColor];
+        [UIApplication.sharedApplication.delegate.window addSubview:coverView];
+        
+        UIAlertController *alertCtrler = (UIAlertController *)_topMostCtrler;
+        __weak typeof(self) wSelf = self;
+        [alertCtrler dismissViewControllerAnimated:NO completion:^{
+            
+            [coverView removeFromSuperview];
+            
+            UIViewController *ctrler = [UIApplication sharedApplication].delegate.window.topMostViewController;
+            [ctrler presentViewController:wSelf.platformCtrler animated:YES completion:NULL];
+        }];
+        
+    } else {
+    
+        [_topMostCtrler presentViewController:_platformCtrler animated:YES completion:NULL];
+    }
 }
 
 - (void)dismissPlatformController
 {
-    [_platformCtrler.view removeFromSuperview];
-    _platformCtrler = nil;
-    [_firstResponder becomeFirstResponder];
+    __weak typeof(self) wSelf = self;
+    [_platformCtrler dismissViewControllerAnimated:YES completion:^{
+        if ([wSelf.topMostCtrler isKindOfClass:[UIAlertController class]]) {
+            UIViewController *ctrler = [UIApplication sharedApplication].delegate.window.topMostViewController;
+            [ctrler presentViewController:wSelf.topMostCtrler animated:YES completion:NULL];
+        } else {
+            [_firstResponder becomeFirstResponder];
+        }
+    }];
 }
 
 - (void)downloadImage

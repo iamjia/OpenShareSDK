@@ -28,7 +28,7 @@
             [mailComposeCtrler addAttachmentData:msg.dataItem.attachment mimeType:msg.dataItem.attachmentMimeType fileName:msg.dataItem.attachmentFileName];
         }
         
-        [ctrler presentViewController:mailComposeCtrler animated:YES completion:nil];
+        [ctrler presentViewController:mailComposeCtrler animated:YES completion:NULL];
         
     } else {
         msg.dataItem.platformCode = kOSPlatformEmail;
