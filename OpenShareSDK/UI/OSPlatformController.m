@@ -11,6 +11,7 @@
 #import "ScreenCaptureManager.h"
 #import "TCKit.h"
 #import "PresentAnimator.h"
+#import "DismissAnimator.h"
 
 static NSString *const kCellIdentifier = @"UICollectionViewCell";
 static NSInteger const kContentBtnTag = 1024;
@@ -308,19 +309,16 @@ static CGFloat const kAnimDuration = 0.35f;
 
 - (void)tapDismiss
 {
-    __weak typeof(self) wSelf = self;
-    [self dismiss:^{
-        if (nil != wSelf.delegate && [wSelf.delegate respondsToSelector:@selector(OSPlatformControllerWillDismiss:)]) {
-            [wSelf.delegate OSPlatformControllerWillDismiss:wSelf];
-        }
-    }];
+    if (nil != self.delegate && [self.delegate respondsToSelector:@selector(OSPlatformControllerWillDismiss:)]) {
+        [self.delegate OSPlatformControllerWillDismiss:self];
+    }
 }
 
 - (void)show
 {
     CATransition *animation = [CATransition animation];
     animation.duration = kAnimDuration;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     animation.type = kCATransitionMoveIn;
     animation.subtype = kCATransitionFromTop;
     animation.removedOnCompletion = YES;
@@ -328,7 +326,7 @@ static CGFloat const kAnimDuration = 0.35f;
     
     CATransition *hiddenAnim = [CATransition animation];
     hiddenAnim.type = kCATransitionReveal;
-    hiddenAnim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    hiddenAnim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     hiddenAnim.duration = kAnimDuration;
     hiddenAnim.removedOnCompletion = YES;
     [_grayTouchView.layer addAnimation:hiddenAnim forKey:nil];
@@ -338,7 +336,7 @@ static CGFloat const kAnimDuration = 0.35f;
     scaleAnim.fromValue = @(0.2f);
     scaleAnim.toValue = @(1.0f);
     scaleAnim.duration = kAnimDuration;
-    scaleAnim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    scaleAnim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     scaleAnim.removedOnCompletion = NO;
     scaleAnim.fillMode = kCAFillModeForwards;
     [_previewImageView.layer addAnimation:scaleAnim forKey:nil];
@@ -373,7 +371,7 @@ static CGFloat const kAnimDuration = 0.35f;
 
 - (nullable id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
 {
-    return [[PresentAnimator alloc] init];
+    return [[DismissAnimator alloc] init];
 }
 
 #pragma mark - CAAnimationDelegate

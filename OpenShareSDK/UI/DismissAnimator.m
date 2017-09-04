@@ -1,14 +1,14 @@
 //
-//  PresentAnimator.m
+//  DismissAnimator.m
 //  OpenShareDemo
 //
-//  Created by Jia on 2017/8/24.
+//  Created by Jia on 2017/9/4.
 //  Copyright © 2017年 Jia. All rights reserved.
 //
 
-#import "PresentAnimator.h"
+#import "DismissAnimator.h"
 
-@implementation PresentAnimator
+@implementation DismissAnimator
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
 {
@@ -21,7 +21,7 @@
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
     UIView *containerView = transitionContext.containerView;
-
+    
     UIView *fromView = nil;
     UIView *toView = nil;
     
@@ -38,8 +38,10 @@
     
     fromView.alpha = 1.0f;
     toView.alpha = 0.0f;
-
+    
     [containerView addSubview:toView];
+    
+    containerView.backgroundColor = [UIColor clearColor];
     
     NSTimeInterval transitionDuration = [self transitionDuration:transitionContext];
     

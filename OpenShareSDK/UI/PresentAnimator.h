@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PresentAnimator : NSObject<UIViewControllerAnimatedTransitioning>
+@interface PresentAnimator : NSObject <UIViewControllerAnimatedTransitioning>
 
 @end
