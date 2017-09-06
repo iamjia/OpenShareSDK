@@ -222,7 +222,7 @@
     _firstResponder = _topMostCtrler.view.findFirstResponder;
     [_firstResponder resignFirstResponder];
     
-    if ([_topMostCtrler isKindOfClass:[UIAlertController class]]) {
+    if ([_topMostCtrler isKindOfClass:UIAlertController.class] || [_topMostCtrler isKindOfClass:UIActivityViewController.class]) {
         
         UIView *coverView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         coverView.backgroundColor = [UIColor whiteColor];
@@ -248,7 +248,8 @@
 {
     __weak typeof(self) wSelf = self;
     [_platformCtrler dismissViewControllerAnimated:YES completion:^{
-        if ([wSelf.topMostCtrler isKindOfClass:[UIAlertController class]]) {
+        if ([wSelf.topMostCtrler isKindOfClass:UIAlertController.class]
+            || [wSelf.topMostCtrler isKindOfClass:UIActivityViewController.class]) {
             UIViewController *ctrler = [UIApplication sharedApplication].delegate.window.topMostViewController;
             [ctrler presentViewController:wSelf.topMostCtrler animated:YES completion:NULL];
         } else {
