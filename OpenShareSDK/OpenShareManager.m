@@ -16,6 +16,7 @@
 #import "UIImage+SDYHelper.h"
 #import "UIView+TCHelper.h"
 #import "UIView+StatusBar.h"
+#import "ScreenCaptureManager.h"
 
 @interface OpenShareManager () <OSPlatformControllerDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate>
 {
@@ -71,7 +72,7 @@
     
     _message = msg;
     _shareCompletionHandle = completion;
-    _platformCtrler = [[OSPlatformController alloc] initWithPlatformCodes:validCodes];
+    _platformCtrler = [[OSPlatformController alloc] initWithPlatformCodes:validCodes screenShot:[UIImage imageWithData:ScreenCaptureManager.manger.screenShot] fullScreen:NO];
     _platformCtrler.delegate = self;
     _platformCtrler.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
@@ -93,7 +94,7 @@
     
     _message = msg;
     _shareCompletionHandle = completion;
-    _platformCtrler = [[OSPlatformController alloc] initWithPlatformCodes:validCodes screenShot:[UIImage imageWithData:msg.dataItem.imageData]];
+    _platformCtrler = [[OSPlatformController alloc] initWithPlatformCodes:validCodes screenShot:[UIImage imageWithData:msg.dataItem.imageData] fullScreen:YES];
     _platformCtrler.delegate = self;
     _platformCtrler.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     

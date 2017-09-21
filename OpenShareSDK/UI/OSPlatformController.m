@@ -31,14 +31,15 @@ static CGFloat const kAnimDuration = 0.35f;
     UICollectionView *_collectionView;
     NSDictionary *_platformConfig;
     UIView *_containerView;
-    UIView *_grayTouchView;
+    UIView *_touchView;
     UIButton *_cancelBtn;
     
     UIImage *_screenShot;
     UIImageView *_previewImageView;
-    UIImageView *_blurBackgroundImgView;
+    UIImageView *_backgroundView;
     
     BOOL _shouldAnimate;
+    BOOL _fullScreen;
 }
 
 - (NSBundle *)openShareBundle
@@ -104,9 +105,12 @@ static CGFloat const kAnimDuration = 0.35f;
     return _containerView.frame.size.height;
 }
 
-- (instancetype)initWithPlatformCodes:(NSArray<NSNumber/*OSPlatformCode*/ *> *)codes
+- (instancetype)initWithPlatformCodes:(NSArray<NSNumber *> *)codes screenShot:(UIImage *)screenShot fullScreen:(BOOL)fullScreen
 {
     if (self = [super init]) {
+        _screenShot = screenShot;
+        _fullScreen = fullScreen;
+        
         if (nil == _platforms) {
             _platforms = NSMutableArray.array;
         }
@@ -119,15 +123,7 @@ static CGFloat const kAnimDuration = 0.35f;
             [_platforms addObject:platform];
         }
     }
-    
     return self;
-}
-
-- (instancetype)initWithPlatformCodes:(NSArray<NSNumber *> *)codes screenShot:(UIImage *)screenShot
-{
-    _screenShot = screenShot;
-    
-    return [self initWithPlatformCodes:codes];
 }
 
 - (void)viewDidLoad
@@ -138,14 +134,19 @@ static CGFloat const kAnimDuration = 0.35f;
     self.modalPresentationStyle = UIModalPresentationFullScreen;
     self.transitioningDelegate = self;
     
-    _grayTouchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    _grayTouchView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
-    _grayTouchView.hidden = YES;
-    _grayTouchView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _backgroundView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    _backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _backgroundView.image = _fullScreen ? _screenShot.blurImage : _screenShot;
+    [self.view addSubview:_backgroundView];
+    
+    _touchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    _touchView.backgroundColor = _fullScreen ? [UIColor clearColor] : [UIColor colorWithWhite:0 alpha:0.5];
+    _touchView.hidden = YES;
+    _touchView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDismiss)];
-    [_grayTouchView addGestureRecognizer:tapGes];
-    [self.view addSubview:_grayTouchView];
+    [_touchView addGestureRecognizer:tapGes];
+    [self.view addSubview:_touchView];
     
     CGFloat spacing = 2.0f;
     CGFloat itemWidth = [UIScreen mainScreen].bounds.size.width > 320.0f ? 90.0f : 77.0f;
@@ -164,15 +165,10 @@ static CGFloat const kAnimDuration = 0.35f;
     _containerView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:_containerView];
     
-    if (nil != _screenShot) {
+    if (_fullScreen) {
         self.previewImageView.frame = CGRectMake(0.0f, 10.0f, self.view.bounds.size.width, rect.origin.y - 15.0f);
         _previewImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [_grayTouchView addSubview:_previewImageView];
-        
-        _blurBackgroundImgView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-        _blurBackgroundImgView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [_grayTouchView insertSubview:_blurBackgroundImgView atIndex:0];
-        _blurBackgroundImgView.image = _screenShot.blurImage;
+        [_touchView addSubview:_previewImageView];
     }
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -217,7 +213,7 @@ static CGFloat const kAnimDuration = 0.35f;
     _shouldAnimate = nil == self.presentedViewController;
     
     ScreenCaptureManager.manger.ignoreNotification = YES;
-    if (nil != _screenShot && ![UIApplication sharedApplication].isStatusBarHidden) {
+    if (_fullScreen && nil != _screenShot && ![UIApplication sharedApplication].isStatusBarHidden) {
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
     }
     
@@ -242,7 +238,7 @@ static CGFloat const kAnimDuration = 0.35f;
     [super viewWillDisappear:animated];
     ScreenCaptureManager.manger.ignoreNotification = NO;
     
-    if (nil != _screenShot) {
+    if (_fullScreen && nil != _screenShot) {
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
     }
 }
@@ -329,8 +325,8 @@ static CGFloat const kAnimDuration = 0.35f;
     hiddenAnim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     hiddenAnim.duration = kAnimDuration;
     hiddenAnim.removedOnCompletion = YES;
-    [_grayTouchView.layer addAnimation:hiddenAnim forKey:nil];
-    _grayTouchView.hidden = NO;
+    [_touchView.layer addAnimation:hiddenAnim forKey:nil];
+    _touchView.hidden = NO;
     
     CABasicAnimation *scaleAnim = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     scaleAnim.fromValue = @(0.2f);
@@ -360,8 +356,8 @@ static CGFloat const kAnimDuration = 0.35f;
     hiddenAnim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     hiddenAnim.duration = kAnimDuration;
     hiddenAnim.removedOnCompletion = YES;
-    [_grayTouchView.layer addAnimation:hiddenAnim forKey:nil];
-    _grayTouchView.hidden = YES;
+    [_touchView.layer addAnimation:hiddenAnim forKey:nil];
+    _touchView.hidden = YES;
 }
 
 - (nullable id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
