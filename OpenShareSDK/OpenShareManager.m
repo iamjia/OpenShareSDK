@@ -22,7 +22,7 @@
 {
     @private
     __weak id _shareFinishObsvr;
-    __weak id _firstResponder;
+    
 }
 
 @property (nonatomic, strong) UIViewController *topMostCtrler;
@@ -30,6 +30,7 @@
 @property (nonatomic, assign) OSPlatformCode platform;
 @property (nonatomic, strong) OSMessage *message;
 @property (nonatomic, copy) OSShareCompletionHandle shareCompletionHandle;
+@property (nonatomic, weak) id firstResponder;
 
 @end
 
@@ -251,10 +252,10 @@
     [_platformCtrler dismissViewControllerAnimated:YES completion:^{
         if ([wSelf.topMostCtrler isKindOfClass:UIAlertController.class]
             || [wSelf.topMostCtrler isKindOfClass:UIActivityViewController.class]) {
-            UIViewController *ctrler = [UIApplication sharedApplication].delegate.window.topMostViewController;
-            [ctrler presentViewController:wSelf.topMostCtrler animated:YES completion:NULL];
+            UIViewController *ctrler = UIApplication.sharedApplication.delegate.window.topMostViewController;
+            [ctrler presentViewController:wSelf.topMostCtrler animated:YES completion:nil];
         } else {
-            [_firstResponder becomeFirstResponder];
+            [wSelf.firstResponder becomeFirstResponder];
         }
     }];
 }
