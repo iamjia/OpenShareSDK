@@ -8,7 +8,6 @@
 
 #import "ScreenCaptureManager.h"
 #import "OpenShareManager.h"
-#import "UIView+StatusBar.h"
 
 @implementation ScreenCaptureManager
 {
@@ -53,10 +52,11 @@
     
     for (UIWindow *window in [[UIApplication sharedApplication] windows]) {
         [window drawViewHierarchyInRect:window.bounds afterScreenUpdates:YES];
-        
+        UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+
         // add statusBar
-        UIView *statusBarView = UIView.statusBar;
-        [statusBarView drawViewHierarchyInRect:statusBarView.bounds afterScreenUpdates:YES];
+//        UIView *statusBarView = UIView.statusBar;
+        [statusBar drawViewHierarchyInRect:statusBar.bounds afterScreenUpdates:YES];
     }
     
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();

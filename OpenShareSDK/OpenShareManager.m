@@ -15,7 +15,7 @@
 #import "SVProgressHUD.h"
 #import "UIImage+SDYHelper.h"
 #import "UIView+TCHelper.h"
-#import "UIView+StatusBar.h"
+#import "UIView+FindFirstResponder.h"
 #import "ScreenCaptureManager.h"
 
 @interface OpenShareManager () <OSPlatformControllerDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate>

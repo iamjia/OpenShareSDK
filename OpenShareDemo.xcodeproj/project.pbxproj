@@ -50,8 +50,8 @@
 		088CABEB1CFBDD75000CEFCD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 088CABEA1CFBDD75000CEFCD /* AppDelegate.m */; };
 		088CABEE1CFBDD75000CEFCD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 088CABED1CFBDD75000CEFCD /* ViewController.m */; };
 		088CABF31CFBDD75000CEFCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 088CABF21CFBDD75000CEFCD /* Assets.xcassets */; };
+		089D30DD20512098008BDC10 /* UIView+FindFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 089D30D220512097008BDC10 /* UIView+FindFirstResponder.m */; };
 		08CD7CE91ED4261E001C959B /* ScreenCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 08CD7CE81ED4261E001C959B /* ScreenCaptureManager.m */; };
-		08D2FF681EFBB76B00DFD84F /* UIView+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 08D2FF661EFBB76B00DFD84F /* UIView+StatusBar.m */; };
 		08D7A60B1D9CBC5400F8457B /* os_copy_url.png in Resources */ = {isa = PBXBuildFile; fileRef = 08D7A6081D9CBC5400F8457B /* os_copy_url.png */; };
 		08D7A60C1D9CBC5400F8457B /* os_copy_url@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 08D7A6091D9CBC5400F8457B /* os_copy_url@2x.png */; };
 		08D7A60D1D9CBC5400F8457B /* os_copy_url@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 08D7A60A1D9CBC5400F8457B /* os_copy_url@3x.png */; };
@@ -263,10 +263,10 @@
 		088CAC131CFBDD94000CEFCD /* OpenShareResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenShareResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		088CAC151CFBDD94000CEFCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		088CAD501CFBDEAE000CEFCD /* OpenShareDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenShareDemo-Prefix.pch"; sourceTree = "<group>"; };
+		089D30D220512097008BDC10 /* UIView+FindFirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FindFirstResponder.m"; sourceTree = "<group>"; };
+		089D30DC20512098008BDC10 /* UIView+FindFirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindFirstResponder.h"; sourceTree = "<group>"; };
 		08CD7CE71ED4261E001C959B /* ScreenCaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenCaptureManager.h; sourceTree = "<group>"; };
 		08CD7CE81ED4261E001C959B /* ScreenCaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenCaptureManager.m; sourceTree = "<group>"; };
-		08D2FF651EFBB76B00DFD84F /* UIView+StatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+StatusBar.h"; sourceTree = "<group>"; };
-		08D2FF661EFBB76B00DFD84F /* UIView+StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+StatusBar.m"; sourceTree = "<group>"; };
 		08D7A6081D9CBC5400F8457B /* os_copy_url.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = os_copy_url.png; sourceTree = "<group>"; };
 		08D7A6091D9CBC5400F8457B /* os_copy_url@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "os_copy_url@2x.png"; sourceTree = "<group>"; };
 		08D7A60A1D9CBC5400F8457B /* os_copy_url@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "os_copy_url@3x.png"; sourceTree = "<group>"; };
@@ -491,8 +491,8 @@
 			children = (
 				B727546B1F14AA0B0078CD09 /* UIImage+SDYHelper.h */,
 				B727546C1F14AA0B0078CD09 /* UIImage+SDYHelper.m */,
-				08D2FF651EFBB76B00DFD84F /* UIView+StatusBar.h */,
-				08D2FF661EFBB76B00DFD84F /* UIView+StatusBar.m */,
+				089D30DC20512098008BDC10 /* UIView+FindFirstResponder.h */,
+				089D30D220512097008BDC10 /* UIView+FindFirstResponder.m */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -792,9 +792,9 @@
 				08851A341CFC300B00F2F1B8 /* OpenShare.m in Sources */,
 				08851A311CFC300B00F2F1B8 /* OpenShare+SinaWeibo.m in Sources */,
 				08476AD31F5CF9440081FB8E /* DismissAnimator.m in Sources */,
-				08D2FF681EFBB76B00DFD84F /* UIView+StatusBar.m in Sources */,
 				081F70301F4ECBD40028DC98 /* PresentAnimator.m in Sources */,
 				08851A321CFC300B00F2F1B8 /* OpenShare+Sms.m in Sources */,
+				089D30DD20512098008BDC10 /* UIView+FindFirstResponder.m in Sources */,
 				08CD7CE91ED4261E001C959B /* ScreenCaptureManager.m in Sources */,
 				08851A351CFC300B00F2F1B8 /* OpenShare+Helper.m in Sources */,
 				08851A371CFC300B00F2F1B8 /* OpenShareManager.m in Sources */,
