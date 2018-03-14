@@ -265,7 +265,7 @@
     // thumbnailurl 和 imageurl 理论上是不共存的。如果都设置了的话，imageUrl 优先
     NSURL *url = nil != _message.dataItem.imageUrl ? _message.dataItem.imageUrl : _message.dataItem.thumbnailUrl;
     if (nil != url) {
-        NSString *path = [[self.class defaultCacheDirectoryInDomain:@"OSImageCache"] stringByAppendingPathComponent:url.absoluteString.MD5_16];
+        NSString *path = [[self.class defaultCacheDirectoryInDomain:@"OSImageCache" create:YES] URLByAppendingPathComponent:url.absoluteString.MD5_16].path;
         TCHTTPCachePolicy *policy = [[TCHTTPCachePolicy alloc] init];
         policy.cacheTimeoutInterval = kTCHTTPRequestCacheNeverExpired;
         policy.shouldExpiredCacheValid = NO;
