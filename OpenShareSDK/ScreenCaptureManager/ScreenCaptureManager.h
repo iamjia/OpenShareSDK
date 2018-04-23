@@ -16,6 +16,6 @@
 
 - (void)listenUserDidTakeScreenshotNotificationCompletion:(void(^)(UIImage *screenshot))completion;
 - (void)cancelListen;
-- (NSData *)screenShot;
+- (UIImage *)screenShot;
 
 @end
