@@ -46,7 +46,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:_screenshotObserver];
 }
 
-- (NSData *)screenShot
+- (UIImage *)screenShot
 {
     UIGraphicsBeginImageContextWithOptions([UIScreen mainScreen].bounds.size, NO, [UIScreen mainScreen].scale);
     
@@ -62,7 +62,7 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    return UIImageJPEGRepresentation(image, 0.8);
+    return image;
 }
 
 @end
