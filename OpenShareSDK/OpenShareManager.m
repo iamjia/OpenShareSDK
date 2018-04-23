@@ -73,7 +73,7 @@
     
     _message = msg;
     _shareCompletionHandle = completion;
-    _platformCtrler = [[OSPlatformController alloc] initWithPlatformCodes:validCodes screenShot:[UIImage imageWithData:ScreenCaptureManager.manger.screenShot] fullScreen:NO];
+    _platformCtrler = [[OSPlatformController alloc] initWithPlatformCodes:validCodes screenShot:ScreenCaptureManager.manger.screenShot fullScreen:NO];
     _platformCtrler.delegate = self;
     _platformCtrler.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
