@@ -55,7 +55,7 @@
 
     self.view.backgroundColor = [UIColor cyanColor];
     
-    [[ScreenCaptureManager manger] listenUserDidTakeScreenshotNotificationCompletion:^(NSData *screenshot) {
+    [[ScreenCaptureManager manger] listenUserDidTakeScreenshotNotificationCompletion:^(UIImage *screenshot) {
         
     }];
 }

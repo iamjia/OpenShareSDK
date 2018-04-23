@@ -30,7 +30,7 @@
     return s_mgr;
 }
 
-- (void)listenUserDidTakeScreenshotNotificationCompletion:(void(^)(NSData *screenshot))completion
+- (void)listenUserDidTakeScreenshotNotificationCompletion:(void(^)(UIImage *screenshot))completion
 {
     [[NSNotificationCenter defaultCenter] removeObserver:_screenshotObserver];
     __weak typeof(self) wSelf = self;
