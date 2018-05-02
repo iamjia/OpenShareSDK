@@ -34,7 +34,7 @@
 {
     [NSNotificationCenter.defaultCenter removeObserver:_screenshotObserver];
     __weak typeof(self) wSelf = self;
-    _screenshotObserver = [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationUserDidTakeScreenshotNotification object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
+    _screenshotObserver = [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationUserDidTakeScreenshotNotification object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
         if (!wSelf.ignoreNotification && nil != completion) {
             completion(wSelf.screenShot);
         }
