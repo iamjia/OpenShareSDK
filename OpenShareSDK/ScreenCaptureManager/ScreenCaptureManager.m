@@ -12,12 +12,12 @@
 @implementation ScreenCaptureManager
 {
 @private
-    id _screenshotObserver;
+    __weak id _screenshotObserver;
 }
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:_screenshotObserver];
+    [NSNotificationCenter.defaultCenter removeObserver:_screenshotObserver];
 }
 
 + (instancetype)manger
@@ -25,14 +25,14 @@
     static ScreenCaptureManager *s_mgr = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        s_mgr = [[ScreenCaptureManager alloc] init];
+        s_mgr = [[self alloc] init];
     });
     return s_mgr;
 }
 
 - (void)listenUserDidTakeScreenshotNotificationCompletion:(void(^)(UIImage *screenshot))completion
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:_screenshotObserver];
+    [NSNotificationCenter.defaultCenter removeObserver:_screenshotObserver];
     __weak typeof(self) wSelf = self;
     _screenshotObserver = [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationUserDidTakeScreenshotNotification object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
         if (!wSelf.ignoreNotification && nil != completion) {
@@ -43,26 +43,27 @@
 
 - (void)cancelListen
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:_screenshotObserver];
+    [NSNotificationCenter.defaultCenter removeObserver:_screenshotObserver];
 }
 
 - (UIImage *)screenShot
 {
-    UIGraphicsBeginImageContextWithOptions([UIScreen mainScreen].bounds.size, NO, [UIScreen mainScreen].scale);
-    
-    for (UIWindow *window in [[UIApplication sharedApplication] windows]) {
+    UIGraphicsBeginImageContextWithOptions(UIScreen.mainScreen.bounds.size, NO, UIScreen.mainScreen.scale);
+    for (UIWindow *window in UIApplication.sharedApplication.windows) {
         [window drawViewHierarchyInRect:window.bounds afterScreenUpdates:YES];
-        UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
-
-        // add statusBar
-//        UIView *statusBarView = UIView.statusBar;
-        [statusBar drawViewHierarchyInRect:statusBar.bounds afterScreenUpdates:YES];
     }
     
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
+    @try {
+        static NSString *const key = @"statusBar";
+        UIView *statusBar = [[UIApplication.sharedApplication valueForKey:[key stringByAppendingString:@"Window"]] valueForKey:key];
+        [statusBar drawViewHierarchyInRect:statusBar.bounds afterScreenUpdates:YES];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return image;
+    }
 }
 
 @end
