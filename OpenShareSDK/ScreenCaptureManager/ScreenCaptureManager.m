@@ -55,7 +55,7 @@
     
     @try {
         static NSString *const key = @"statusBar";
-        UIView *statusBar = [[UIApplication.sharedApplication valueForKey:[key stringByAppendingString:@"Window"]] valueForKey:key];
+        UIView *statusBar = [[UIApplication.sharedApplication valueForKey:[key stringByAppendingString:[NSStringFromClass(UIWindow.class) substringFromIndex:2]]] valueForKey:key];
         [statusBar drawViewHierarchyInRect:statusBar.bounds afterScreenUpdates:YES];
     } @catch (NSException *exception) {
         

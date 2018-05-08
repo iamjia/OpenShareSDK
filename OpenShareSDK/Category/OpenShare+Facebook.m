@@ -86,7 +86,8 @@ static OpenShareFacebookParam *s_fbParam = nil;
             OpenShareArgPhoto *photo = [[OpenShareArgPhoto alloc] init];
             photo.tag = @"png"; // 固定，不管gif，还是jpeg，还是png，fb都标记的png
             photo.isPasteboard = YES;
-            photo.fbAppBridgeType_jsonReadyValue = @"com.apple.UIKit.pboard.general";
+            photo.fbAppBridgeType_jsonReadyValue = UIPasteboardNameGeneral;
+//            UIPasteboard
         
             methodArgs.photos = @[photo];
             break;
@@ -146,7 +147,7 @@ static OpenShareFacebookParam *s_fbParam = nil;
         
         self.identifier = nil;
         
-        OSFacebookResponse *response = [OSFacebookResponse tc_mappingWithDictionary:url.parseQueryToDictionary];
+        OSFacebookResponse *response = [OSFacebookResponse tc_mappingWithDictionary:[url parseQueryToDictionaryWithDecodeInf:NO]];
         [[NSNotificationCenter defaultCenter] postNotificationName:kOSShareFinishedNotification object:response];
     }
     return canHandle;

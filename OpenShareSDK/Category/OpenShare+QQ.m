@@ -175,7 +175,7 @@ static OSQQParameter *s_qqParam = nil;
         }
         
         self.identifier = nil;
-        OSQQResponse *response = [OSQQResponse tc_mappingWithDictionary:url.parseQueryToDictionary];
+        OSQQResponse *response = [OSQQResponse tc_mappingWithDictionary:[url parseQueryToDictionaryWithDecodeInf:NO]];
         [[NSNotificationCenter defaultCenter] postNotificationName:kOSShareFinishedNotification object:response];
     }
     return canHandle;
