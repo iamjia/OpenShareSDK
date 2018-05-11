@@ -12,7 +12,7 @@
 @interface OpenShare (Facebook)
 
 + (BOOL)isFacebookInstalled;
-+ (void)registFacebookWithAppID:(NSString *)appID;
++ (void)registFacebookWithAppID:(NSString *)appID appName:(NSString *)appName;
 + (void)shareToFacebook:(OSMessage *)msg;
 
 @end

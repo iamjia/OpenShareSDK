@@ -26,9 +26,11 @@ static NSString *const kFbAppName = @"Thor";
     return [self canOpenURL:com.URL];
 }
 
-+ (void)registFacebookWithAppID:(NSString *)appID
++ (void)registFacebookWithAppID:(NSString *)appID appName:(NSString *)appName
 {
-    [self registAppWithName:kOSFacebookIdentifier data:@{@"appid": appID}];
+    [self registAppWithName:kOSFacebookIdentifier data:@{@"appid": appID,
+                                                         @"app_name": appName
+                                                         }];
 }
 
 // Data
@@ -40,7 +42,7 @@ static OpenShareFacebookParam *s_fbParam = nil;
         s_fbParam = [[OpenShareFacebookParam alloc] init];
       
         OpenShareFacebookBridgeArgs *args = [[OpenShareFacebookBridgeArgs alloc] init];
-        args.app_name = kFbAppName; // fb开发者平台注册的app名字
+        args.app_name = [self dataForRegistedApp:kOSFacebookIdentifier][@"app_name"]; // fb开发者平台注册的app名字
         args.sdk_version = @"4.12.0"; // 固定
         
         s_fbParam.bridge_args = args.tc_JSONString;

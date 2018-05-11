@@ -21,7 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [OpenShare registQQWithAppId:@"a"];
-    [OpenShare registFacebookWithAppID:@"1102019623254542"];
+    [OpenShare registFacebookWithAppID:@"1102019623254542" appName:@""];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController=[[UINavigationController alloc] initWithRootViewController:[[ViewController alloc] init]];
     [self.window makeKeyAndVisible];
