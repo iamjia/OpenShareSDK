@@ -12,7 +12,6 @@
 #import "TCHTTPRequestCenter.h"
 #import "OSPlatformController.h"
 #import "OSResponse.h"
-#import "SVProgressHUD.h"
 #import "UIImage+SDYHelper.h"
 #import "UIView+TCHelper.h"
 #import "UIView+FindFirstResponder.h"
