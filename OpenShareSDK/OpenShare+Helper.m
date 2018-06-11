@@ -7,6 +7,7 @@
 //
 
 #import "OpenShare+Helper.h"
+#import "NSURL+TCHelper.h"
 
 @implementation OpenShare (Helper)
 
@@ -33,15 +34,7 @@
 
 + (NSString *)urlEncodedString:(NSString *)inputString
 {
-    NSString *unencodedString = inputString;
-    NSString *encodedString = (NSString *)
-    CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                                              (CFStringRef)unencodedString,
-                                                              NULL,
-                                                              (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-                                                              kCFStringEncodingUTF8));
-    
-    return encodedString;
+    return TCPercentEscapedStringFromString(inputString);
 }
 
 + (NSString *)urlStr:(NSDictionary *)parameters
