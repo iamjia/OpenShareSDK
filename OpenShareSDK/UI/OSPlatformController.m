@@ -57,8 +57,7 @@ static CGFloat const kAnimDuration = 0.35f;
 
 - (UIImage *)snsImageNamed:(NSString *)name
 {
-    NSString *path = [NSString stringWithFormat:@"OpenShareResources.bundle/%@", name];
-    return [UIImage imageNamed:path];
+    return [UIImage imageNamed:name inBundle:self.openShareBundle compatibleWithTraitCollection:nil];
 }
 
 - (NSDictionary *)platformConfig
