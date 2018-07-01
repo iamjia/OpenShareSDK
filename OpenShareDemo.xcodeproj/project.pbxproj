@@ -33,14 +33,10 @@
 		088CABF31CFBDD75000CEFCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 088CABF21CFBDD75000CEFCD /* Assets.xcassets */; };
 		089D30DD20512098008BDC10 /* UIView+FindFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 089D30D220512097008BDC10 /* UIView+FindFirstResponder.m */; };
 		08CD7CE91ED4261E001C959B /* ScreenCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 08CD7CE81ED4261E001C959B /* ScreenCaptureManager.m */; };
-		08D7A6261D9CC35500F8457B /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08D7A6221D9CC35500F8457B /* SVIndefiniteAnimatedView.m */; };
-		08D7A6271D9CC35500F8457B /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08D7A6231D9CC35500F8457B /* SVProgressHUD.bundle */; };
-		08D7A6281D9CC35500F8457B /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 08D7A6251D9CC35500F8457B /* SVProgressHUD.m */; };
 		08EA8C701E6D615300508506 /* OpenShare+Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EA8C6B1E6D615300508506 /* OpenShare+Facebook.m */; };
 		08EA8C711E6D615300508506 /* OpenShare+Twitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EA8C6D1E6D615300508506 /* OpenShare+Twitter.m */; };
 		08EA8C751E6DA29600508506 /* OpenShareFacebookParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EA8C741E6DA29600508506 /* OpenShareFacebookParam.m */; };
 		B727546D1F14AA0B0078CD09 /* UIImage+SDYHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B727546C1F14AA0B0078CD09 /* UIImage+SDYHelper.m */; };
-		B76A7F051F1356090010FBD3 /* libTCKitLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B76A7EFB1F1355B80010FBD3 /* libTCKitLib.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,83 +53,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 08851A041CFC2FDD00F2F1B8;
 			remoteInfo = OpenShareSDK;
-		};
-		B76A7EF01F1355B80010FBD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B76A7EE41F1355B80010FBD3 /* TCKitSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B76D745C1F13181C00CF77FA;
-			remoteInfo = TCFoundation;
-		};
-		B76A7EF21F1355B80010FBD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B76A7EE41F1355B80010FBD3 /* TCKitSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B76D74641F13181C00CF77FA;
-			remoteInfo = TCFoundationTests;
-		};
-		B76A7EF41F1355B80010FBD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B76A7EE41F1355B80010FBD3 /* TCKitSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B76D75031F131B8000CF77FA;
-			remoteInfo = TCUIKit;
-		};
-		B76A7EF61F1355B80010FBD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B76A7EE41F1355B80010FBD3 /* TCKitSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B76D750B1F131B8000CF77FA;
-			remoteInfo = TCUIKitTests;
-		};
-		B76A7EF81F1355B80010FBD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B76A7EE41F1355B80010FBD3 /* TCKitSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B76D75811F1322AB00CF77FA;
-			remoteInfo = TCDebug;
-		};
-		B76A7EFA1F1355B80010FBD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B76A7EE41F1355B80010FBD3 /* TCKitSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B76D75951F13234D00CF77FA;
-			remoteInfo = TCKitLib;
-		};
-		B76A7EFC1F1355B80010FBD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B76A7EE41F1355B80010FBD3 /* TCKitSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B76D76A51F1323AF00CF77FA;
-			remoteInfo = TCNetwork;
-		};
-		B76A7EFE1F1355B80010FBD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B76A7EE41F1355B80010FBD3 /* TCKitSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B76D76AD1F1323B000CF77FA;
-			remoteInfo = TCNetworkTests;
-		};
-		B76A7F001F1355B80010FBD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B76A7EE41F1355B80010FBD3 /* TCKitSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B76D77551F132DFA00CF77FA;
-			remoteInfo = TCApplicationLib;
-		};
-		B76A7F061F1356180010FBD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B76A7EE41F1355B80010FBD3 /* TCKitSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B76D75941F13234D00CF77FA;
-			remoteInfo = TCKitLib;
-		};
-		B7A1602A1F46E3CB00E17685 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B76A7EE41F1355B80010FBD3 /* TCKitSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B72A5F571F1F4066002D900D;
-			remoteInfo = TCFoundationLib;
 		};
 		B7BB97E01D90D1FC00C1F2A0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -220,11 +139,6 @@
 		089D30DC20512098008BDC10 /* UIView+FindFirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindFirstResponder.h"; sourceTree = "<group>"; };
 		08CD7CE71ED4261E001C959B /* ScreenCaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenCaptureManager.h; sourceTree = "<group>"; };
 		08CD7CE81ED4261E001C959B /* ScreenCaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenCaptureManager.m; sourceTree = "<group>"; };
-		08D7A6211D9CC35500F8457B /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
-		08D7A6221D9CC35500F8457B /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
-		08D7A6231D9CC35500F8457B /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		08D7A6241D9CC35500F8457B /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		08D7A6251D9CC35500F8457B /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		08EA8C6A1E6D615300508506 /* OpenShare+Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OpenShare+Facebook.h"; sourceTree = "<group>"; };
 		08EA8C6B1E6D615300508506 /* OpenShare+Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OpenShare+Facebook.m"; sourceTree = "<group>"; };
 		08EA8C6C1E6D615300508506 /* OpenShare+Twitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OpenShare+Twitter.h"; sourceTree = "<group>"; };
@@ -234,7 +148,6 @@
 		08EA8D9A1E6EA96300508506 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B727546B1F14AA0B0078CD09 /* UIImage+SDYHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SDYHelper.h"; sourceTree = "<group>"; };
 		B727546C1F14AA0B0078CD09 /* UIImage+SDYHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SDYHelper.m"; sourceTree = "<group>"; };
-		B76A7EE41F1355B80010FBD3 /* TCKitSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TCKitSDK.xcodeproj; path = ../TCKit/TCKitSDK/TCKitSDK.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,7 +162,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B76A7F051F1356090010FBD3 /* libTCKitLib.a in Frameworks */,
 				08851C211CFC326F00F2F1B8 /* libOpenShareSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,7 +253,6 @@
 		088CABDA1CFBDD75000CEFCD = {
 			isa = PBXGroup;
 			children = (
-				B76A7EE41F1355B80010FBD3 /* TCKitSDK.xcodeproj */,
 				088CABE51CFBDD75000CEFCD /* OpenShareDemo */,
 				088CAC141CFBDD94000CEFCD /* OpenShareResources */,
 				08851A061CFC2FDD00F2F1B8 /* OpenShareSDK */,
@@ -362,7 +273,6 @@
 		088CABE51CFBDD75000CEFCD /* OpenShareDemo */ = {
 			isa = PBXGroup;
 			children = (
-				08D7A6201D9CC35500F8457B /* SVProgressHUD */,
 				088CABE91CFBDD75000CEFCD /* AppDelegate.h */,
 				088CABEA1CFBDD75000CEFCD /* AppDelegate.m */,
 				088CABEC1CFBDD75000CEFCD /* ViewController.h */,
@@ -413,36 +323,6 @@
 			path = Private;
 			sourceTree = "<group>";
 		};
-		08D7A6201D9CC35500F8457B /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				08D7A6211D9CC35500F8457B /* SVIndefiniteAnimatedView.h */,
-				08D7A6221D9CC35500F8457B /* SVIndefiniteAnimatedView.m */,
-				08D7A6231D9CC35500F8457B /* SVProgressHUD.bundle */,
-				08D7A6241D9CC35500F8457B /* SVProgressHUD.h */,
-				08D7A6251D9CC35500F8457B /* SVProgressHUD.m */,
-			);
-			name = SVProgressHUD;
-			path = ../../SVProgressHUD;
-			sourceTree = "<group>";
-		};
-		B76A7EE51F1355B80010FBD3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B76A7EF11F1355B80010FBD3 /* TCFoundation.framework */,
-				B76A7EF31F1355B80010FBD3 /* TCFoundationTests.xctest */,
-				B76A7EF51F1355B80010FBD3 /* TCUIKit.framework */,
-				B76A7EF71F1355B80010FBD3 /* TCUIKitTests.xctest */,
-				B76A7EF91F1355B80010FBD3 /* libTCDebug.a */,
-				B76A7EFB1F1355B80010FBD3 /* libTCKitLib.a */,
-				B76A7EFD1F1355B80010FBD3 /* TCNetwork.framework */,
-				B76A7EFF1F1355B80010FBD3 /* TCNetworkTests.xctest */,
-				B76A7F011F1355B80010FBD3 /* libTCApplicationLib.a */,
-				B7A1602B1F46E3CB00E17685 /* libTCFoundationLib.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -476,7 +356,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				B76A7F071F1356180010FBD3 /* PBXTargetDependency */,
 				08851C1E1CFC325E00F2F1B8 /* PBXTargetDependency */,
 				08851C201CFC325E00F2F1B8 /* PBXTargetDependency */,
 			);
@@ -509,7 +388,7 @@
 		088CABDB1CFBDD75000CEFCD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = Jia;
 				TargetAttributes = {
 					08851A041CFC2FDD00F2F1B8 = {
@@ -534,12 +413,6 @@
 			mainGroup = 088CABDA1CFBDD75000CEFCD;
 			productRefGroup = 088CABE41CFBDD75000CEFCD /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = B76A7EE51F1355B80010FBD3 /* Products */;
-					ProjectRef = B76A7EE41F1355B80010FBD3 /* TCKitSDK.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				088CABE21CFBDD75000CEFCD /* OpenShareDemo */,
@@ -549,85 +422,11 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		B76A7EF11F1355B80010FBD3 /* TCFoundation.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = TCFoundation.framework;
-			remoteRef = B76A7EF01F1355B80010FBD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B76A7EF31F1355B80010FBD3 /* TCFoundationTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = TCFoundationTests.xctest;
-			remoteRef = B76A7EF21F1355B80010FBD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B76A7EF51F1355B80010FBD3 /* TCUIKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = TCUIKit.framework;
-			remoteRef = B76A7EF41F1355B80010FBD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B76A7EF71F1355B80010FBD3 /* TCUIKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = TCUIKitTests.xctest;
-			remoteRef = B76A7EF61F1355B80010FBD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B76A7EF91F1355B80010FBD3 /* libTCDebug.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libTCDebug.a;
-			remoteRef = B76A7EF81F1355B80010FBD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B76A7EFB1F1355B80010FBD3 /* libTCKitLib.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libTCKitLib.a;
-			remoteRef = B76A7EFA1F1355B80010FBD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B76A7EFD1F1355B80010FBD3 /* TCNetwork.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = TCNetwork.framework;
-			remoteRef = B76A7EFC1F1355B80010FBD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B76A7EFF1F1355B80010FBD3 /* TCNetworkTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = TCNetworkTests.xctest;
-			remoteRef = B76A7EFE1F1355B80010FBD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B76A7F011F1355B80010FBD3 /* libTCApplicationLib.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libTCApplicationLib.a;
-			remoteRef = B76A7F001F1355B80010FBD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B7A1602B1F46E3CB00E17685 /* libTCFoundationLib.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libTCFoundationLib.a;
-			remoteRef = B7A1602A1F46E3CB00E17685 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		088CABE11CFBDD75000CEFCD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08D7A6271D9CC35500F8457B /* SVProgressHUD.bundle in Resources */,
 				08851C221CFC327600F2F1B8 /* OpenShareResources.bundle in Resources */,
 				088CABF31CFBDD75000CEFCD /* Assets.xcassets in Resources */,
 			);
@@ -696,9 +495,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				088CABEE1CFBDD75000CEFCD /* ViewController.m in Sources */,
-				08D7A6281D9CC35500F8457B /* SVProgressHUD.m in Sources */,
 				088CABEB1CFBDD75000CEFCD /* AppDelegate.m in Sources */,
-				08D7A6261D9CC35500F8457B /* SVIndefiniteAnimatedView.m in Sources */,
 				088CABE81CFBDD75000CEFCD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -722,11 +519,6 @@
 			isa = PBXTargetDependency;
 			target = 08851A041CFC2FDD00F2F1B8 /* OpenShareSDK */;
 			targetProxy = 08851C1F1CFC325E00F2F1B8 /* PBXContainerItemProxy */;
-		};
-		B76A7F071F1356180010FBD3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TCKitLib;
-			targetProxy = B76A7F061F1356180010FBD3 /* PBXContainerItemProxy */;
 		};
 		B7BB97E11D90D1FC00C1F2A0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -785,12 +577,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -840,12 +634,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -962,12 +758,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

@@ -32,7 +32,7 @@
     NSError *error = nil;
     if (0 != _result) {
         NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: @"share failed",
-                                   NSLocalizedDescriptionKey: [NSString stringWithFormat:@"%zd", _result]};
+                                   NSLocalizedDescriptionKey: [NSString stringWithFormat:@"%@", @(_result)]};
         error = [NSError errorWithDomain:kOSErrorDomainWeixin
                                     code:_result
                                 userInfo:userInfo];
