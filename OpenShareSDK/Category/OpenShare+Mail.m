@@ -33,7 +33,7 @@
     } else {
         msg.dataItem.platformCode = kOSPlatformEmail;
         
-        NSMutableString *email = [[NSMutableString alloc] initWithString:@"mailto:"];
+        NSMutableString *email = [NSMutableString stringWithString:@"mailto:"];
         if (msg.dataItem.toRecipients.count > 0) {
             [email appendFormat:@"%@?", [msg.dataItem.toRecipients componentsJoinedByString:@","]];
         } else {
@@ -51,7 +51,10 @@
             [email appendString:[NSString stringWithFormat:@"&body=%@", msg.dataItem.emailBody]];
         }
         
-        NSString *url = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *url = [email stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
+        if (nil == url) {
+            return;
+        }
         [UIApplication.sharedApplication openURL:[NSURL URLWithString:url] options:@{} completionHandler:nil];
     }
 }
