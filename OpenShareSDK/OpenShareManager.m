@@ -109,7 +109,7 @@
         return codes;
     }
     
-    NSMutableArray *arry = codes.mutableCopy;;
+    NSMutableArray *arry = codes.mutableCopy;
     
     NSNumber *qq = @(kOSPlatformQQ);
     NSNumber *qqzone = @(kOSPlatformQQZone);
