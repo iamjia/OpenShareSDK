@@ -255,6 +255,9 @@
             [ctrler presentViewController:wSelf.topMostCtrler animated:YES completion:nil];
         } else {
             [wSelf.firstResponder becomeFirstResponder];
+            // 释放
+            wSelf.topMostCtrler = nil;
+            wSelf.firstResponder = nil;
         }
     }];
 }
