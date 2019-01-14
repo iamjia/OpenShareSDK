@@ -36,7 +36,7 @@
 		08EA8C701E6D615300508506 /* OpenShare+Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EA8C6B1E6D615300508506 /* OpenShare+Facebook.m */; };
 		08EA8C711E6D615300508506 /* OpenShare+Twitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EA8C6D1E6D615300508506 /* OpenShare+Twitter.m */; };
 		08EA8C751E6DA29600508506 /* OpenShareFacebookParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EA8C741E6DA29600508506 /* OpenShareFacebookParam.m */; };
-		B727546D1F14AA0B0078CD09 /* UIImage+SDYHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B727546C1F14AA0B0078CD09 /* UIImage+SDYHelper.m */; };
+		B727546D1F14AA0B0078CD09 /* UIImage+OSHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B727546C1F14AA0B0078CD09 /* UIImage+OSHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,8 +146,8 @@
 		08EA8C731E6DA29600508506 /* OpenShareFacebookParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenShareFacebookParam.h; sourceTree = "<group>"; };
 		08EA8C741E6DA29600508506 /* OpenShareFacebookParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenShareFacebookParam.m; sourceTree = "<group>"; };
 		08EA8D9A1E6EA96300508506 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		B727546B1F14AA0B0078CD09 /* UIImage+SDYHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SDYHelper.h"; sourceTree = "<group>"; };
-		B727546C1F14AA0B0078CD09 /* UIImage+SDYHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SDYHelper.m"; sourceTree = "<group>"; };
+		B727546B1F14AA0B0078CD09 /* UIImage+OSHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+OSHelper.h"; sourceTree = "<group>"; };
+		B727546C1F14AA0B0078CD09 /* UIImage+OSHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+OSHelper.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,8 +315,8 @@
 		08D2FF621EFBB76B00DFD84F /* Private */ = {
 			isa = PBXGroup;
 			children = (
-				B727546B1F14AA0B0078CD09 /* UIImage+SDYHelper.h */,
-				B727546C1F14AA0B0078CD09 /* UIImage+SDYHelper.m */,
+				B727546B1F14AA0B0078CD09 /* UIImage+OSHelper.h */,
+				B727546C1F14AA0B0078CD09 /* UIImage+OSHelper.m */,
 				089D30DC20512098008BDC10 /* UIView+FindFirstResponder.h */,
 				089D30D220512097008BDC10 /* UIView+FindFirstResponder.m */,
 			);
@@ -485,7 +485,7 @@
 				08CD7CE91ED4261E001C959B /* ScreenCaptureManager.m in Sources */,
 				08851A351CFC300B00F2F1B8 /* OpenShare+Helper.m in Sources */,
 				08851A371CFC300B00F2F1B8 /* OpenShareManager.m in Sources */,
-				B727546D1F14AA0B0078CD09 /* UIImage+SDYHelper.m in Sources */,
+				B727546D1F14AA0B0078CD09 /* UIImage+OSHelper.m in Sources */,
 				08851A2F1CFC300B00F2F1B8 /* OpenShare+Mail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

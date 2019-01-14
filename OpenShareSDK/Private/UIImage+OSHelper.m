@@ -1,14 +1,14 @@
 //
-//  UIImage+SDYHelper.m
-//  SudiyiClient
+//  UIImage+THRHelper.m
+//
 //
 //  Created by jia on 16/11/1.
-//  Copyright © 2016年 Sudiyi. All rights reserved.
+//  Copyright © 2016年 jia. All rights reserved.
 //
 
-#import "UIImage+SDYHelper.h"
+#import "UIImage+OSHelper.h"
 
-@implementation UIImage (SDYHelper)
+@implementation UIImage (OSHelper)
 
 - (NSData *)dataWithMaxCompressSizeBytes:(NSUInteger)bytes
 {

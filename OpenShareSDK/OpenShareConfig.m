@@ -1,9 +1,9 @@
 //
 //  OpenShareConfig.m
-//  SudiyiClient
+
 //
 //  Created by jia on 16/5/18.
-//  Copyright © 2016年 Sudiyi. All rights reserved.
+//  Copyright © 2016年 jia. All rights reserved.
 //
 
 #import "OpenShareConfig.h"
