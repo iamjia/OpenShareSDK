@@ -405,10 +405,12 @@
 			};
 			buildConfigurationList = 088CABDE1CFBDD75000CEFCD /* Build configuration list for PBXProject "OpenShareDemo" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
+				Base,
 			);
 			mainGroup = 088CABDA1CFBDD75000CEFCD;
 			productRefGroup = 088CABE41CFBDD75000CEFCD /* Products */;
