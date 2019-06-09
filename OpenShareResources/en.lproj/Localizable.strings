@@ -16,6 +16,6 @@
 "os.platform.copyurl" = "Copy";
 "os.platform.facebook" = "Facebook";
 "os.platform.twitter" = "Twitter";
-"os.platform.system" = "Other";
-"copyurl.success" = "Copy Success";
+"os.platform.system" = "More";
+"copyurl.success" = "Copy success";
 "public.button.cancel" = "Cancel";

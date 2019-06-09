@@ -13,7 +13,7 @@
 #import "PresentAnimator.h"
 #import "DismissAnimator.h"
 
-static NSString *const kCellIdentifier = @"UICollectionViewCell";
+static NSString *const kCell = @"cell";
 static NSInteger const kContentBtnTag = 1024;
 static CGFloat const kAnimDuration = 0.35f;
 
@@ -129,18 +129,19 @@ static CGFloat const kAnimDuration = 0.35f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = UIColor.clearColor;
     
     self.modalPresentationStyle = UIModalPresentationFullScreen;
     self.transitioningDelegate = self;
     
-    _backgroundView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    CGRect bounds = self.view.bounds;
+    _backgroundView = [[UIImageView alloc] initWithFrame:bounds];
     _backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _backgroundView.image = _fullScreen ? _screenShot.blurImage : _screenShot;
     [self.view addSubview:_backgroundView];
     
-    _touchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    _touchView.backgroundColor = _fullScreen ? [UIColor clearColor] : [UIColor colorWithWhite:0 alpha:0.5];
+    _touchView = [[UIView alloc] initWithFrame:bounds];
+    _touchView.backgroundColor = _fullScreen ? UIColor.clearColor : [UIColor colorWithWhite:0 alpha:0.5f];
     _touchView.hidden = YES;
     _touchView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
@@ -148,25 +149,25 @@ static CGFloat const kAnimDuration = 0.35f;
     [_touchView addGestureRecognizer:tapGes];
     [self.view addSubview:_touchView];
     
-    CGFloat spacing = 2.0f;
-    CGFloat itemWidth = [UIScreen mainScreen].bounds.size.width > 320.0f ? 90.0f : 77.0f;
-    CGFloat cancelBtnHeight = 49.0f;
-    CGFloat separatorLineHeight = [UIView pointWithPixel:1.0f];
+    static CGFloat const spacing = 2.0f;
+    static CGFloat const cancelBtnHeight = 49.0f;
     
-    CGFloat maxNumberOfItemsInRow = floor([UIScreen mainScreen].bounds.size.width / itemWidth);
-    NSInteger row = ceil(_platforms.count / maxNumberOfItemsInRow);
+    CGFloat itemWidth = UIScreen.mainScreen.bounds.size.width > 320.0f ? 90.0f : 77.0f;
+    CGFloat separatorLineHeight = [UIView pointWithPixel:1.0f];
+    CGFloat maxNumberOfItemsInRow = floor(UIScreen.mainScreen.bounds.size.width / itemWidth);
+    NSInteger row = (NSInteger)ceil(_platforms.count / maxNumberOfItemsInRow);
     CGFloat collectionViewHeight = row * itemWidth + (row + 1) * spacing;
     
-    CGRect rect = self.view.frame;
+    CGRect rect = bounds;
     rect.size.height = collectionViewHeight + separatorLineHeight + cancelBtnHeight;
-    rect.origin.y = self.view.bounds.size.height - rect.size.height;
+    rect.origin.y = bounds.size.height - rect.size.height;
     
     _containerView = [[UIView alloc] initWithFrame:rect];
-    _containerView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _containerView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:_containerView];
     
     if (_fullScreen) {
-        self.previewImageView.frame = CGRectMake(0.0f, 10.0f, self.view.bounds.size.width, rect.origin.y - 15.0f);
+        self.previewImageView.frame = CGRectMake(0.0f, 10.0f, bounds.size.width, rect.origin.y - 15.0f);
         _previewImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [_touchView addSubview:_previewImageView];
     }
@@ -178,31 +179,29 @@ static CGFloat const kAnimDuration = 0.35f;
     layout.sectionInset = UIEdgeInsetsMake(spacing, spacing, spacing, spacing);
     layout.itemSize = (CGSize){.width = itemWidth, .height = itemWidth};
     
-    
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _containerView.frame.size.width, collectionViewHeight) collectionViewLayout:layout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, bounds.size.width, collectionViewHeight) collectionViewLayout:layout];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
-    _collectionView.backgroundColor = [UIColor whiteColor];
-    [_collectionView registerClass:UICollectionViewCell.class forCellWithReuseIdentifier:kCellIdentifier];
-    _collectionView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
+    _collectionView.backgroundColor = UIColor.whiteColor;
+    [_collectionView registerClass:UICollectionViewCell.class forCellWithReuseIdentifier:kCell];
+    _collectionView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
     [_containerView addSubview:_collectionView];
     
-    UIView *separatorLine = [[UIView alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(_collectionView.frame), self.view.bounds.size.width, separatorLineHeight)];
+    UIView *separatorLine = [[UIView alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(_collectionView.frame), bounds.size.width, separatorLineHeight)];
     separatorLine.backgroundColor = RGBHex(0xdcdcdc);
     separatorLine.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
     [_containerView addSubview:separatorLine];
     
     _cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _cancelBtn.backgroundColor = [UIColor whiteColor];
+    _cancelBtn.backgroundColor = UIColor.whiteColor;
     [_cancelBtn setTitleColor:RGBHex(0x333333) forState:UIControlStateNormal];
     
     NSString *cancelTitle = NSLocalizedStringFromTableInBundle(@"public.button.cancel", nil, self.openShareBundle, nil);
     [_cancelBtn setTitle:cancelTitle forState:UIControlStateNormal];
-    _cancelBtn.frame = CGRectMake(0.0f, CGRectGetMaxY(separatorLine.frame), self.view.bounds.size.width, cancelBtnHeight);
+    _cancelBtn.frame = CGRectMake(0.0f, CGRectGetMaxY(separatorLine.frame), bounds.size.width, cancelBtnHeight);
     _cancelBtn.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
     [_cancelBtn addTarget:self action:@selector(tapDismiss) forControlEvents:UIControlEventTouchUpInside];
     [_containerView addSubview:_cancelBtn];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -257,21 +256,20 @@ static CGFloat const kAnimDuration = 0.35f;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
-    
+    UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCell forIndexPath:indexPath];
     UIButton *contentBtn = [cell.contentView viewWithTag:kContentBtnTag];
     if (nil == contentBtn) {
         contentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        contentBtn.frame = CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height);
+        contentBtn.frame = cell.bounds;
         contentBtn.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         contentBtn.tag = 1024;
         contentBtn.userInteractionEnabled = NO;
-        contentBtn.layoutStyle = kTCButtonLayoutStyleImageTopTitleBottom;
-        contentBtn.paddingBetweenTitleAndImage = 5.0f;
         contentBtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
         contentBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
         contentBtn.titleLabel.minimumScaleFactor = 0.8;
-        [contentBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [contentBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+        contentBtn.paddingBetweenTitleAndImage = 5.0f;
+        contentBtn.layoutStyle = kTCButtonLayoutStyleImageTopTitleBottom;
         [cell.contentView addSubview:contentBtn];
     }
     
@@ -288,7 +286,6 @@ static CGFloat const kAnimDuration = 0.35f;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    
     CGRect rect = [collectionView convertRect:cell.frame toView:self.view];
     
     if (nil != _screenShot) {

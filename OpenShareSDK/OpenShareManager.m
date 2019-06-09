@@ -21,7 +21,6 @@
 {
     @private
     __weak id _shareFinishObsvr;
-    
 }
 
 @property (nonatomic, strong) UIViewController *topMostCtrler;
@@ -219,14 +218,13 @@
 
 - (void)showPlatformController
 {
-    _topMostCtrler = [UIApplication sharedApplication].delegate.window.topMostViewController;
+    _topMostCtrler = UIApplication.sharedApplication.delegate.window.topMostViewController;
     _firstResponder = _topMostCtrler.view.findFirstResponder;
     [_firstResponder resignFirstResponder];
     
     if ([_topMostCtrler isKindOfClass:UIAlertController.class] || [_topMostCtrler isKindOfClass:UIActivityViewController.class]) {
-        
-        UIView *coverView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        coverView.backgroundColor = [UIColor whiteColor];
+        UIView *coverView = [[UIView alloc] initWithFrame:UIScreen.mainScreen.bounds];
+        coverView.backgroundColor = UIColor.whiteColor;
         [UIApplication.sharedApplication.delegate.window addSubview:coverView];
         
         UIAlertController *alertCtrler = (UIAlertController *)_topMostCtrler;
@@ -235,12 +233,11 @@
             
             [coverView removeFromSuperview];
             
-            UIViewController *ctrler = [UIApplication sharedApplication].delegate.window.topMostViewController;
+            UIViewController *ctrler = UIApplication.sharedApplication.delegate.window.topMostViewController;
             [ctrler presentViewController:wSelf.platformCtrler animated:YES completion:NULL];
         }];
         
     } else {
-    
         [_topMostCtrler presentViewController:_platformCtrler animated:YES completion:NULL];
     }
 }
@@ -255,10 +252,10 @@
             [ctrler presentViewController:wSelf.topMostCtrler animated:YES completion:nil];
         } else {
             [wSelf.firstResponder becomeFirstResponder];
-            // 释放
-            wSelf.topMostCtrler = nil;
-            wSelf.firstResponder = nil;
         }
+        
+        wSelf.topMostCtrler = nil;
+        wSelf.firstResponder = nil;
     }];
 }
 
