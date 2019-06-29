@@ -54,11 +54,16 @@
     }
     
     @try {
-        static NSString *const key = @"statusBar";
-        UIView *statusBar = [[UIApplication.sharedApplication valueForKey:[key stringByAppendingString:[NSStringFromClass(UIWindow.class) substringFromIndex:2]]] valueForKey:key];
-        [statusBar drawViewHierarchyInRect:statusBar.bounds afterScreenUpdates:YES];
+        if (SYSTEM_VERSION_LESS_THAN(@"13")) {
+            static NSString *const key = @"statusBar";
+            NSString *kp = [key stringByAppendingString:[NSStringFromClass(UIWindow.class) substringFromIndex:2]];
+            if ([UIApplication.sharedApplication respondsToSelector:NSSelectorFromString(kp)]) {
+                UIView *statusBar = [[UIApplication.sharedApplication valueForKey:kp] valueForKey:key];
+                [statusBar drawViewHierarchyInRect:statusBar.bounds afterScreenUpdates:YES];
+            }
+        }
     } @catch (NSException *exception) {
-        
+        NSLog(@"%@", exception);
     } @finally {
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
