@@ -182,19 +182,28 @@ static CGFloat const kAnimDuration = 0.35f;
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, bounds.size.width, collectionViewHeight) collectionViewLayout:layout];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
-    _collectionView.backgroundColor = UIColor.whiteColor;
+    if (@available(iOS 13, *)) {
+        _collectionView.backgroundColor = UIColor.tertiarySystemBackgroundColor;
+    } else {
+        _collectionView.backgroundColor = UIColor.whiteColor;
+    }
+    
     [_collectionView registerClass:UICollectionViewCell.class forCellWithReuseIdentifier:kCell];
     _collectionView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
     [_containerView addSubview:_collectionView];
     
     UIView *separatorLine = [[UIView alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(_collectionView.frame), bounds.size.width, separatorLineHeight)];
-    separatorLine.backgroundColor = RGBHex(0xdcdcdc);
+    if (@available(iOS 13, *)) {
+        separatorLine.backgroundColor = UIColor.separatorColor;
+    } else {
+        separatorLine.backgroundColor = RGBHex(0xdcdcdc);
+    }
     separatorLine.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
     [_containerView addSubview:separatorLine];
     
     _cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _cancelBtn.backgroundColor = UIColor.whiteColor;
-    [_cancelBtn setTitleColor:RGBHex(0x333333) forState:UIControlStateNormal];
+    _cancelBtn.backgroundColor = _collectionView.backgroundColor;
+    [_cancelBtn setTitleColor:[UIColor colorWithLight:RGBHex(0x333333) dark:UIColor.whiteColor] forState:UIControlStateNormal];
     
     NSString *cancelTitle = NSLocalizedStringFromTableInBundle(@"public.button.cancel", nil, self.openShareBundle, nil);
     [_cancelBtn setTitle:cancelTitle forState:UIControlStateNormal];
@@ -267,7 +276,7 @@ static CGFloat const kAnimDuration = 0.35f;
         contentBtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
         contentBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
         contentBtn.titleLabel.minimumScaleFactor = 0.8;
-        [contentBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+        [contentBtn setTitleColor:[UIColor colorWithLight:UIColor.blackColor dark:UIColor.whiteColor] forState:UIControlStateNormal];
         contentBtn.paddingBetweenTitleAndImage = 5.0f;
         contentBtn.layoutStyle = kTCButtonLayoutStyleImageTopTitleBottom;
         [cell.contentView addSubview:contentBtn];
