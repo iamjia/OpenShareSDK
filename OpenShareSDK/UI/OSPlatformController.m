@@ -182,9 +182,12 @@ static CGFloat const kAnimDuration = 0.35f;
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, bounds.size.width, collectionViewHeight) collectionViewLayout:layout];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
+#ifdef __IPHONE_13_0
     if (@available(iOS 13, *)) {
         _collectionView.backgroundColor = UIColor.tertiarySystemBackgroundColor;
-    } else {
+    } else
+#endif
+    {
         _collectionView.backgroundColor = UIColor.whiteColor;
     }
     
@@ -193,9 +196,12 @@ static CGFloat const kAnimDuration = 0.35f;
     [_containerView addSubview:_collectionView];
     
     UIView *separatorLine = [[UIView alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(_collectionView.frame), bounds.size.width, separatorLineHeight)];
+#ifdef __IPHONE_13_0
     if (@available(iOS 13, *)) {
         separatorLine.backgroundColor = UIColor.separatorColor;
-    } else {
+    } else
+#endif
+    {
         separatorLine.backgroundColor = RGBHex(0xdcdcdc);
     }
     separatorLine.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
