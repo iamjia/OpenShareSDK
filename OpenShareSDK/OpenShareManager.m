@@ -224,13 +224,13 @@
     
     if ([_topMostCtrler isKindOfClass:UIAlertController.class] || [_topMostCtrler isKindOfClass:UIActivityViewController.class]) {
         UIView *coverView = [[UIView alloc] initWithFrame:UIScreen.mainScreen.bounds];
-        coverView.backgroundColor = UIColor.whiteColor;
-        [UIApplication.sharedApplication.delegate.window addSubview:coverView];
+        UIWindow *window = UIApplication.sharedApplication.delegate.window;
+        coverView.backgroundColor = window.backgroundColor;
+        [window addSubview:coverView];
         
         UIAlertController *alertCtrler = (UIAlertController *)_topMostCtrler;
         __weak typeof(self) wSelf = self;
         [alertCtrler dismissViewControllerAnimated:NO completion:^{
-            
             [coverView removeFromSuperview];
             
             UIViewController *ctrler = UIApplication.sharedApplication.delegate.window.topMostViewController;
