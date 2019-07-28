@@ -12,6 +12,7 @@
 #import "TCKit.h"
 #import "PresentAnimator.h"
 #import "DismissAnimator.h"
+#import "UIColor+TCUtilities.h"
 
 static NSString *const kCell = @"cell";
 static NSInteger const kContentBtnTag = 1024;
@@ -182,12 +183,10 @@ static CGFloat const kAnimDuration = 0.35f;
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, bounds.size.width, collectionViewHeight) collectionViewLayout:layout];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
-#ifdef __IPHONE_13_0
+
     if (@available(iOS 13, *)) {
         _collectionView.backgroundColor = UIColor.tertiarySystemBackgroundColor;
-    } else
-#endif
-    {
+    } else {
         _collectionView.backgroundColor = UIColor.whiteColor;
     }
     
@@ -196,12 +195,10 @@ static CGFloat const kAnimDuration = 0.35f;
     [_containerView addSubview:_collectionView];
     
     UIView *separatorLine = [[UIView alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(_collectionView.frame), bounds.size.width, separatorLineHeight)];
-#ifdef __IPHONE_13_0
+
     if (@available(iOS 13, *)) {
         separatorLine.backgroundColor = UIColor.separatorColor;
-    } else
-#endif
-    {
+    } else {
         separatorLine.backgroundColor = RGBHex(0xdcdcdc);
     }
     separatorLine.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
