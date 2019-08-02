@@ -149,7 +149,7 @@ static OpenShareFacebookParam *s_fbParam = nil;
         
         self.identifier = nil;
         
-        OSFacebookResponse *response = [OSFacebookResponse tc_mappingWithDictionary:[url parseQueryToDictionaryWithDecodeInf:NO]];
+        OSFacebookResponse *response = [OSFacebookResponse tc_mappingWithDictionary:[url parseQueryToDictionaryWithDecodeInf:NO orderKey:NULL]];
         [[NSNotificationCenter defaultCenter] postNotificationName:kOSShareFinishedNotification object:response];
     }
     return canHandle;

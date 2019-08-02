@@ -147,7 +147,7 @@ static OSQQParameter *s_qqParam = nil;
     
     // 修改原因，NSURLComponents 会把host percentencode，从而导致qq重启。这个url shareapi不应该被encode
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@", kOSQQScheme, kOSQQShareApi]];
-    return [url appendParam:qqParam.tc_plistObject override:NO];
+    return [url appendParamIfNeed:qqParam.tc_plistObject orderKey:nil];
 }
 
 + (BOOL)chatWithQQ:(NSString *)qq
@@ -175,7 +175,7 @@ static OSQQParameter *s_qqParam = nil;
         }
         
         self.identifier = nil;
-        OSQQResponse *response = [OSQQResponse tc_mappingWithDictionary:[url parseQueryToDictionaryWithDecodeInf:NO]];
+        OSQQResponse *response = [OSQQResponse tc_mappingWithDictionary:[url parseQueryToDictionaryWithDecodeInf:NO orderKey:NULL]];
         [[NSNotificationCenter defaultCenter] postNotificationName:kOSShareFinishedNotification object:response];
     }
     return canHandle;
