@@ -41,7 +41,6 @@ static CGFloat const kAnimDuration = 0.35f;
     
     BOOL _shouldAnimate;
     BOOL _fullScreen;
-    BOOL _prefersStatusBarHidden;
 }
 
 - (NSBundle *)openShareBundle
@@ -226,6 +225,7 @@ static CGFloat const kAnimDuration = 0.35f;
     ScreenCaptureManager.manger.ignoreNotification = YES;
     if (_fullScreen && nil != _screenShot && !UIApplication.sharedApplication.isStatusBarHidden) {
         self.prefersStatusBarHidden = YES;
+        [self setNeedsStatusBarAppearanceUpdate];
     }
     
     // 禁止邮件或者短信界面dismiss的时候触发这些操作
@@ -250,12 +250,13 @@ static CGFloat const kAnimDuration = 0.35f;
     ScreenCaptureManager.manger.ignoreNotification = NO;
     if (_fullScreen && nil != _screenShot) {
         self.prefersStatusBarHidden = NO;
+        [self setNeedsStatusBarAppearanceUpdate];
     }
 }
 
 - (BOOL)prefersStatusBarHidden
 {
-    return _prefersStatusBarHidden;
+    return [super prefersStatusBarHidden];
 }
 
 
