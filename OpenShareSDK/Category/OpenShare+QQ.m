@@ -125,7 +125,7 @@ static OSQQParameter *s_qqParam = nil;
             
             qqParam.objectlocation = @"pasteboard";
             qqParam.title = [OpenShare base64EncodedString:data.title]; // 这里不需要urlencode
-            NSAssert([[OpenShare base64DecodedString:qqParam.title] isEqualToString:data.title], @"can not decode string for qq");
+            NSCAssert([[OpenShare base64DecodedString:qqParam.title] isEqualToString:data.title], @"can not decode string for qq");
             qqParam.desc = [OpenShare base64AndURLEncodedString:data.content];
             qqParam.url = [OpenShare base64AndURLEncodedURL:data.link];
             qqParam.flashurl = [OpenShare base64AndURLEncodedURL:data.mediaDataUrl];

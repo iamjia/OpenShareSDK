@@ -188,7 +188,7 @@
             break;
         }
         case kOSPlatformCopyUrl : {
-            NSParameterAssert(nil != _message.dataItem.copyableContent);
+            NSCParameterAssert(nil != _message.dataItem.copyableContent);
             if (nil != _message.dataItem.copyableContent) {
                 [UIPasteboard generalPasteboard].string = _message.dataItem.copyableContent;
                 _platform = kOSPlatformCopyUrl;

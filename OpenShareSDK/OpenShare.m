@@ -68,7 +68,7 @@ static NSMutableDictionary<NSString *, NSDictionary *> *s_registedApps = nil;
 
 + (BOOL)openAppWithURL:(NSURL *)url
 {
-    NSParameterAssert(url);
+    NSCParameterAssert(url);
     if (nil == url) {
         return NO;
     }
