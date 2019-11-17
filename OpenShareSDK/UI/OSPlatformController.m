@@ -14,7 +14,6 @@
 #import "DismissAnimator.h"
 #import "UIColor+TCUtilities.h"
 
-static NSString *const kCell = @"cell";
 static NSInteger const kContentBtnTag = 1024;
 static CGFloat const kAnimDuration = 0.35f;
 
@@ -189,7 +188,7 @@ static CGFloat const kAnimDuration = 0.35f;
         _collectionView.backgroundColor = UIColor.whiteColor;
     }
     
-    [_collectionView registerClass:UICollectionViewCell.class forCellWithReuseIdentifier:kCell];
+    [_collectionView registerClass:UICollectionViewCell.class forCellWithReuseIdentifier:kTCCellIdentifier];
     _collectionView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
     [_containerView addSubview:_collectionView];
     
@@ -269,7 +268,7 @@ static CGFloat const kAnimDuration = 0.35f;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCell forIndexPath:indexPath];
+    UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTCCellIdentifier forIndexPath:indexPath];
     UIButton *contentBtn = [cell.contentView viewWithTag:kContentBtnTag];
     if (nil == contentBtn) {
         contentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
