@@ -15,10 +15,11 @@
 {
     static TCMappingOption *opt = nil;
     
-    if (nil == opt) {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         opt = [[TCMappingOption alloc] init];
         opt.nameCodingMapping = @{PropertySTR(desc): @"description"};
-    }
+    });
     
     return opt;
 }

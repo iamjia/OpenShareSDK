@@ -14,7 +14,6 @@
 #import "TCFoundation.h"
 
 static NSString *const kOpenShareFBPasteboardKey = @"com.facebook.Facebook.FBAppBridgeType";
-static NSString *const kFbAppName = @"Thor";
 
 
 @implementation OpenShare (Facebook)
@@ -26,9 +25,12 @@ static NSString *const kFbAppName = @"Thor";
     return [self canOpenURL:com.URL];
 }
 
-+ (void)registFacebookWithAppID:(NSString *)appID appName:(NSString *)appName
++ (void)registFacebookWithAppID:(NSString *)appId appName:(NSString *)appName
 {
-    [self registAppWithName:kOSFacebookIdentifier data:@{@"appid": appID,
+    if (nil == appId || nil == appName) {
+        return;
+    }
+    [self registAppWithName:kOSFacebookIdentifier data:@{@"appid": appId,
                                                          @"app_name": appName
                                                          }];
 }

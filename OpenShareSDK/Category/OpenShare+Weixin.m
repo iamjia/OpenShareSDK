@@ -35,6 +35,9 @@ typedef NS_ENUM(NSInteger, WXObjectType) {
 
 + (void)registWeixinWithAppId:(NSString *)appId
 {
+    if (nil == appId) {
+        return;
+    }
     [self registAppWithName:kOSWeixinIdentifier
                        data:@{@"appid": appId}];
 }

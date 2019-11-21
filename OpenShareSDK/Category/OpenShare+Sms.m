@@ -9,6 +9,7 @@
 #import "OpenShare+Sms.h"
 #import "OpenShare+Helper.h"
 #import "UIWindow+TCHelper.h"
+#import <MobileCoreServices/UTCoreTypes.h>
 
 @implementation OpenShare (Sms)
 
@@ -24,7 +25,7 @@
         
         if (nil != msg.dataItem.attachment) {
             [controller addAttachmentData:msg.dataItem.attachment
-                           typeIdentifier:@"public.data"
+                           typeIdentifier:(__bridge NSString *)kUTTypeData
                                  filename:msg.dataItem.attachmentFileName];
         }
         

@@ -32,6 +32,9 @@ static NSString *const kOSQQChatApi = @"im/chat";
 
 + (void)registQQWithAppId:(NSString *)appId
 {
+    if (nil == appId) {
+        return;
+    }
     [self registAppWithName:kOSQQIdentifier
                        data:@{@"appid": appId,
                               @"callback_name": [NSString stringWithFormat: @"QQ%02llx", appId.longLongValue]}];

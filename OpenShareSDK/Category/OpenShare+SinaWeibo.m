@@ -21,6 +21,9 @@
 
 + (void)registSinaWeiboWithAppKey:(NSString *)appKey
 {
+    if (nil == appKey) {
+        return;
+    }
     [self registAppWithName:kOSSinaIdentifier
                        data:@{@"appKey": appKey}];
 }
