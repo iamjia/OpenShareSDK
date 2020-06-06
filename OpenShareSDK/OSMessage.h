@@ -43,7 +43,7 @@ typedef NS_ENUM(NSInteger, OSMultimediaType) {
  extern NSString *const kOSSinaIdentifier;
  
  */
-- (void)configAccount:(void(^)(OSPlatformAccount *account))config forApp:(NSString *)app;
+- (void)configAccount:(void (^)(OSPlatformAccount *account))config forApp:(NSString *)app;
 - (OSPlatformAccount *)accountForApp:(NSString *)app;
 
 @end

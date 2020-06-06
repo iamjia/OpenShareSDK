@@ -14,7 +14,7 @@
 
 + (instancetype)manger;
 
-- (void)listenUserDidTakeScreenshotNotificationCompletion:(void(^)(UIImage *screenshot))completion;
+- (void)listenUserDidTakeScreenshotNotificationCompletion:(void (^)(UIImage *screenshot))completion;
 - (void)cancelListen;
 - (UIImage *)screenShot;
 

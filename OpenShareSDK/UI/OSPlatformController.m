@@ -351,7 +351,7 @@ static CGFloat const kAnimDuration = 0.35f;
     [_previewImageView.layer addAnimation:scaleAnim forKey:nil];
 }
 
-- (void)dismiss:(void(^)(void))completion
+- (void)dismiss:(void (^)(void))completion
 {
     CATransition *animation = [CATransition animation];
     animation.delegate = self;
