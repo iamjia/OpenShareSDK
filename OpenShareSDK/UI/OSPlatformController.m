@@ -388,7 +388,7 @@ static CGFloat const kAnimDuration = 0.35f;
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
-    void(^completion)(void) = [anim valueForKey:@"finishBlock"];
+    void (^completion)(void) = [anim valueForKey:@"finishBlock"];
     if (nil != completion) {
         completion();
     }
