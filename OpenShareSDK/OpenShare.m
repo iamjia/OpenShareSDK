@@ -104,7 +104,11 @@ static NSMutableDictionary<NSString *, NSDictionary *> *s_registedApps = nil;
             NSError *err = nil;
             switch (encoding) {
                 case kOSPasteboardEncodingKeyedArchiver: {
-                    data = [NSKeyedArchiver archivedDataWithRootObject:value];
+                    if (@available(iOS 11, *)) {
+                        data = [NSKeyedArchiver archivedDataWithRootObject:value requiringSecureCoding:NO error:NULL];
+                    } else {
+                        data = [NSKeyedArchiver archivedDataWithRootObject:value];
+                    }
                     break;
                 }
                 case kOSPasteboardEncodingPropertyListSerialization: {
@@ -127,7 +131,7 @@ static NSMutableDictionary<NSString *, NSDictionary *> *s_registedApps = nil;
             data = nil;
         } @finally {
             if (nil != data) {
-                [[UIPasteboard generalPasteboard] setData:data forPasteboardType:key];
+                [UIPasteboard.generalPasteboard setData:data forPasteboardType:key];
             }
         }
     }
@@ -135,7 +139,7 @@ static NSMutableDictionary<NSString *, NSDictionary *> *s_registedApps = nil;
 
 + (NSDictionary *)generalPasteboardDataForKey:(NSString *)key encoding:(OSPasteboardEncoding)encoding
 {
-    NSData *data = [[UIPasteboard generalPasteboard] dataForPasteboardType:key];
+    NSData *data = [UIPasteboard.generalPasteboard dataForPasteboardType:key];
     if (nil == data) {
         return nil;
     }
@@ -145,9 +149,14 @@ static NSMutableDictionary<NSString *, NSDictionary *> *s_registedApps = nil;
         NSError *err = nil;
         switch (encoding) {
             case kOSPasteboardEncodingKeyedArchiver: {
-                dic = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+                if (@available(iOS 11, *)) {
+                    dic = [NSKeyedUnarchiver unarchivedObjectOfClass:NSDictionary.class fromData:data error:&err];
+                } else {
+                    dic = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+                }
                 break;
             }
+                
             case kOSPasteboardEncodingPropertyListSerialization: {
                 dic = [NSPropertyListSerialization propertyListWithData:data
                                                                 options:kNilOptions

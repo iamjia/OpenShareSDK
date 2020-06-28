@@ -64,8 +64,15 @@
     
     NSMutableArray *pbItems = nil;
     @try {
-        NSData *transferObjectData = [NSKeyedArchiver archivedDataWithRootObject:tfObj.tc_plistObject];
-        NSData *appData = [NSKeyedArchiver archivedDataWithRootObject:app.tc_plistObject];
+        NSData *transferObjectData = nil;
+        NSData *appData = nil;
+        if (@available(iOS 11, *)) {
+            transferObjectData = [NSKeyedArchiver archivedDataWithRootObject:tfObj.tc_plistObject requiringSecureCoding:NO error:NULL];
+            appData = [NSKeyedArchiver archivedDataWithRootObject:app.tc_plistObject requiringSecureCoding:NO error:NULL];
+        } else {
+            transferObjectData = [NSKeyedArchiver archivedDataWithRootObject:tfObj.tc_plistObject];
+            appData = [NSKeyedArchiver archivedDataWithRootObject:app.tc_plistObject];
+        }
         
         pbItems = NSMutableArray.array;
         if (nil != transferObjectData) {
@@ -74,7 +81,15 @@
         if (nil != appData) {
             [pbItems addObject:@{PropertySTR(app): appData}];
         }
-        [pbItems addObject:@{PropertySTR(userInfo): [NSKeyedArchiver archivedDataWithRootObject:@{}]}];
+        
+        NSData *userInfoData = nil;
+        if (@available(iOS 11, *)) {
+            userInfoData = [NSKeyedArchiver archivedDataWithRootObject:@{} requiringSecureCoding:NO error:NULL];
+        } else {
+            userInfoData = [NSKeyedArchiver archivedDataWithRootObject:@{}];
+        }
+        
+        [pbItems addObject:@{PropertySTR(userInfo): userInfoData}];
     } @catch (NSException *exception) {
         NSLog(@"%@", exception);
         pbItems = nil;
@@ -103,12 +118,24 @@
     
     NSMutableDictionary *responseDic = nil;
     @try {
-        NSArray *items = [UIPasteboard generalPasteboard].items;
+        NSArray *items = UIPasteboard.generalPasteboard.items;
         responseDic = [NSMutableDictionary dictionaryWithCapacity:items.count];
         
         for (NSDictionary *item in items) {
             for (NSString *key in item) {
-                responseDic[key] = [key isEqualToString:@"sdkversion"] ? [[NSString alloc] initWithData:item[key] encoding:NSUTF8StringEncoding] : [NSKeyedUnarchiver unarchiveObjectWithData:item[key]];
+                NSString *value = nil;
+                if ([key isEqualToString:@"sdkversion"]) {
+                    value = [[NSString alloc] initWithData:item[key] encoding:NSUTF8StringEncoding];
+                } else {
+                    if (@available(iOS 11, *)) {
+                        value = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:NSString.class, NSDictionary.class, NSArray.class, NSNumber.class, NSData.class, nil] fromData:item[key] error:NULL];
+                    } else {
+                        value = [NSKeyedUnarchiver unarchiveObjectWithData:item[key]];
+                    }
+                }
+                if (nil != value) {
+                    responseDic[key] = value;
+                }
             }
         }
         
@@ -118,7 +145,7 @@
         
     } @finally {
         // 清空微博存的数据
-        [UIPasteboard generalPasteboard].items = @[];
+        UIPasteboard.generalPasteboard.items = @[];
         if ([url.absoluteString rangeOfString:self.identifier].location == NSNotFound) {
             return YES;
         }
